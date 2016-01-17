@@ -34,12 +34,14 @@ end architecture;
 
 -- question 2
 -- signal   | waveform description
--- a
--- b
--- cin
--- the_sum  
+-- a			0 1 0
+-- b			0 0 0
+-- cin			0 0 1
+-- the_sum  	0 1 1
 
 
 -- question 3
-  --insert answer here
+  -- Changing the time to 100ns and yielded the same results as 
+  -- the tests that were executed for 30ns produced. VHDL semantics
+  -- allow for a process to be executed repeatedly.
 
