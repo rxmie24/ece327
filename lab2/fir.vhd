@@ -23,9 +23,9 @@ architecture avg of fir is
                     , sum2 , sum3 , sum4
        : word;
 
-  constant coef1 : word := x"0400";
-  constant coef2 : word := x"0400";
-  constant coef3 : word := x"0400";
+  constant coef1 : word := x"0100";
+  constant coef2 : word := x"0200";
+  constant coef3 : word := x"0300";
   constant coef4 : word := x"0400";
   
 begin
@@ -66,34 +66,35 @@ end architecture;
 -- low-pass filter
 ------------------------------------------------------------------------
 
-architecture low_pass of fir is
+--architecture low_pass of fir is
 
   -- Use the signal names tap, prod, and sum, but change the type to
   -- match your needs.
 
-These lines of code are not commented so as to generate errors so you'll notice them!
+--These lines of code are not commented so as to generate errors so you'll notice them!
 
-You'll want to comment out this whole architecture while testing out the averaging one above!
+--You'll want to comment out this whole architecture while testing out the averaging one above!
 
-For the tap, prod and sum type you'll want to use word_vector to simplify the code - check for it's defination
+--For the tap, prod and sum type you'll want to use word_vector to simplify the code - check for it's defination
 
-For building the design you'll need to add fir_synth_pkg.vhd to the fir.uwp file.  Now is the time to
-   start figuring out what the project file is for.  It has to include all vhdl files used in a project.
+--For building the design you'll need to add fir_synth_pkg.vhd to the fir.uwp file.  Now is the time to
+ --  start figuring out what the project file is for.  It has to include all vhdl files used in a project.
  
-  signal tap, prod, sum : std_logic;
+--  signal tap, prod, sum : std_logic;
   
   -- The attribute line below is usually needed to avoid a warning
   -- from PrecisionRTL that signals could be implemented using
   -- memory arrays.  
 
-  attribute logic_block of tap, prod, sum : signal is true;
+--  attribute logic_block of tap, prod, sum : signal is true;
   
-begin
+--begin
 
-end architecture;
+--end architecture;
 
 -- question 2
-  -- insert your answer here
+  -- 15 LUTs are required for the first adder, and 16 for any subsequent one
 
 -- question 3
-  -- insert your answer here
+  -- The multiplier doesn't use any LUTS.
+ 
