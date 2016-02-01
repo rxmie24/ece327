@@ -92,23 +92,24 @@ architecture low_pass of fir is
 attribute logic_block of tap, prod, sum : signal is true;
 
 begin
+
 	tap(0) <= i_data;
-	MULT_LOOP: for i in 1 to num_taps generate
-		delay_line : process(clk)
-		begin
-			if(rising_edge(clk)) then
-				tap(i) <= tap(i-1);
-			end if;
-		end process;
+	MULT_LOOP : FOR i IN 1 TO num_taps GENERATE
+		delay_seg : PROCESS(clk)
+		BEGIN
+			IF (rising_edge(clk)) THEN
+				tap(i) <= tap(i - 1);
+			END IF;
+		END PROCESS;
 		prod(i) <= mult(tap(i), lpcoef(i));
-	end generate MULT_LOOP;
-	
-	SUM_LOOP: for i in 3 to num_taps generate
-		sum(i) <= prod(i) + sum(i-1);
-	end generate SUM_LOOP;
-	
+	END GENERATE MULT_LOOP;
+	 
+	SUM_LOOP : FOR i IN 3 TO num_taps GENERATE
+		sum(i) <= prod(i) + sum(i - 1);
+	END GENERATE SUM_LOOP;
+	 
 	o_data <= sum(num_taps);
-	
+
 end architecture;
 
 -- question 2
