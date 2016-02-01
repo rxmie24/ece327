@@ -66,11 +66,15 @@ end architecture;
 -- low-pass filter
 ------------------------------------------------------------------------
 
---architecture low_pass of fir is
+architecture low_pass of fir is
 
   -- Use the signal names tap, prod, and sum, but change the type to
   -- match your needs.
 
+  signal tap  : word_vector(num_taps downto 0);
+  signal prod : word_vector(num_taps downto 1);
+  signal sum  : word_vector(num_taps downto 2);
+  
 --These lines of code are not commented so as to generate errors so you'll notice them!
 
 --You'll want to comment out this whole architecture while testing out the averaging one above!
@@ -80,20 +84,35 @@ end architecture;
 --For building the design you'll need to add fir_synth_pkg.vhd to the fir.uwp file.  Now is the time to
  --  start figuring out what the project file is for.  It has to include all vhdl files used in a project.
  
---  signal tap, prod, sum : std_logic;
   
   -- The attribute line below is usually needed to avoid a warning
   -- from PrecisionRTL that signals could be implemented using
   -- memory arrays.  
 
---  attribute logic_block of tap, prod, sum : signal is true;
-  
---begin
+attribute logic_block of tap, prod, sum : signal is true;
 
---end architecture;
+begin
+	tap(0) <= i_data;
+	MULT_LOOP: for i in 1 to num_taps generate
+		delay_line : process(clk)
+		begin
+			if(rising_edge(clk)) then
+				tap(i) <= tap(i-1);
+			end if;
+		end process;
+		prod(i) <= mult(tap(i), lpcoef(i));
+	end generate MULT_LOOP;
+	
+	SUM_LOOP: for i in 3 to num_taps generate
+		sum(i) <= prod(i) + sum(i-1);
+	end generate SUM_LOOP;
+	
+	o_data <= sum(num_taps);
+	
+end architecture;
 
 -- question 2
-  -- 15 LUTs are required for the first adder, and 16 for any subsequent one. We looked after synthesizing and saw that there are 16 bits.
+  -- 16 LUTs are required for the adder.
 
 -- question 3
   -- The multiplier doesn't use any LUTS.

@@ -189,7 +189,7 @@ begin
   -- audio peripheral
   --
   
-  avg : entity work.fir(avg)
+  avg : entity work.fir(low_pass)
 	port map(
 		clk => data_clk,
 		i_data => audio_fltr_input,
