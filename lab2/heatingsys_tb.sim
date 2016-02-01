@@ -1,0 +1,7 @@
+add wave cur_temp
+add wave des_temp
+add wave reset
+add wave clock
+add wave heatmode
+
+run 600ns
