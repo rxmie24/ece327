@@ -68,7 +68,9 @@ architecture main of fir_top is
   signal sine_data
        , noise_data
        , audio_out
-	   , audio_fir
+	   , audio_data_output
+	   , audio_fltr_input
+	   , audio_fltr_output
        : word;
   
   --------------------------------------------------------------
@@ -121,15 +123,18 @@ begin
   --
   -- Your FIR filter MUST be clocked with the data_clk 
 
-
   process begin
     wait until rising_edge( data_clk );
+	
+	--Select input for the filter based off of Switch 17
 	if(sw(17)='0') then
-		audio_out <= sine_data;
+		audio_data_output <= sine_data;
 	else
-		audio_out <= noise_data;
+		audio_data_output <= noise_data;
 	end if;
   end process;
+  
+  audio_fltr_input <= sine_data when sw(17) = '0' else noise_data;
   
   --------------------------------------------------------------
   -- HEX outputs to display the frequency
@@ -145,9 +150,12 @@ begin
 
   ----------------------------------------------------
   
+  -- Use the filtered audio if SW 16 is selected
+  audio_out <= audio_data_output when sw(16) = '0' else audio_fltr_output;
+  
   display_freq <= frequency_map( to_integer ( sine_freq ) );
 
-  --Display X015E for noise 
+  -- Display X015E for noise when Switch 17 ON
   hex7 <= to_sevenseg( unsigned(display_freq(15 downto 12)) ) when sw(17) = '0' else to_sevenseg(X"0");
   hex6 <= to_sevenseg( unsigned(display_freq(11 downto  8)) ) when sw(17) = '0' else to_sevenseg(X"1");
   hex5 <= to_sevenseg( unsigned(display_freq( 7 downto  4)) ) when sw(17) = '0' else to_sevenseg(X"5");
@@ -173,9 +181,7 @@ begin
   end process;
     
 	--Use filter when SW16 is set to on
-  serial_audio_out <= audio_out(to_integer(15 - bit_position)) when (sw(16)='0') 
-						else 
-							audio_fir(to_integer(15 - bit_position));
+  serial_audio_out <= audio_out(to_integer(15 - bit_position));
   
   aud_dacdat       <= serial_audio_out;
   
@@ -186,8 +192,8 @@ begin
   avg : entity work.fir(avg)
 	port map(
 		clk => data_clk,
-		i_data => audio_out,
-		o_data => audio_fir
+		i_data => audio_fltr_input,
+		o_data => audio_fltr_output
 	);
 	
   ----------------------------------------------------
@@ -217,4 +223,3 @@ begin
   --------------------------------------------------------------
   
 end architecture;
-  

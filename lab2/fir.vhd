@@ -23,9 +23,9 @@ architecture avg of fir is
                     , sum2 , sum3 , sum4
        : word;
 
-  constant coef1 : word := x"0100";
-  constant coef2 : word := x"0200";
-  constant coef3 : word := x"0300";
+  constant coef1 : word := x"0400";
+  constant coef2 : word := x"0400";
+  constant coef3 : word := x"0400";
   constant coef4 : word := x"0400";
   
 begin
@@ -93,7 +93,7 @@ end architecture;
 --end architecture;
 
 -- question 2
-  -- 15 LUTs are required for the first adder, and 16 for any subsequent one
+  -- 15 LUTs are required for the first adder, and 16 for any subsequent one. We looked after synthesizing and saw that there are 16 bits.
 
 -- question 3
   -- The multiplier doesn't use any LUTS.
