@@ -1,0 +1,21 @@
+<interfaceDefinition version='1.2' language='verilog' kind='module' name='top_kirsch_chip'>
+	<portList>
+		<port name='nrst' direction='input' type='' kind=''> </port>
+		<port name='clk' direction='input' type='' kind=''> </port>
+		<port name='rxflex' direction='input' type='' kind=''> </port>
+		<port name='txflex' direction='output' type='' kind=''> </port>
+		<port name='o_sevenseg' direction='output' type='[15:0]' kind='array' packedDimension='[15:0]'> </port>
+		<port name='o_mode' direction='output' type='[1:0]' kind='array' packedDimension='[1:0]'> </port>
+		<port name='o_nrst' direction='output' type='' kind=''> </port>
+		<port name='debug_key' direction='input' type='[3:1]' kind='array' packedDimension='[3:1]'> </port>
+		<port name='debug_switch' direction='input' type='[17:0]' kind='array' packedDimension='[17:0]'> </port>
+		<port name='debug_led_red' direction='output' type='[16:0]' kind='array' packedDimension='[16:0]'> </port>
+		<port name='debug_led_grn' direction='output' type='[5:0]' kind='array' packedDimension='[5:0]'> </port>
+		<port name='debug_sevenseg_0' direction='output' type='[7:0]' kind='array' packedDimension='[7:0]'> </port>
+		<port name='debug_sevenseg_1' direction='output' type='[7:0]' kind='array' packedDimension='[7:0]'> </port>
+		<port name='debug_sevenseg_2' direction='output' type='[7:0]' kind='array' packedDimension='[7:0]'> </port>
+		<port name='debug_sevenseg_3' direction='output' type='[7:0]' kind='array' packedDimension='[7:0]'> </port>
+		<port name='debug_sevenseg_4' direction='output' type='[7:0]' kind='array' packedDimension='[7:0]'> </port>
+		<port name='debug_sevenseg_5' direction='output' type='[7:0]' kind='array' packedDimension='[7:0]'> </port>
+	</portList>
+</interfaceDefinition>

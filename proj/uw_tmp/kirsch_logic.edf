@@ -1,0 +1,213 @@
+(edif kirsch 
+ (edifVersion 2 0 0)
+ (edifLevel 0)
+ (keywordMap (keywordLevel 0))
+ (status 
+  (written 
+   (timestamp 2016 03 23 18 38 10)
+   (program "Precision RTL Synthesis" (version "64-bit 2015.2.16"))
+   (author "Mentor Graphics Corporation")))
+ (external cycloneii 
+  (edifLevel 0)
+  (technology (numberDefinition ))
+  (cell NOT (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port IN1 (direction INPUT))
+     (port Y (direction OUTPUT)))))
+  (cell VCC (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port Y (direction OUTPUT)))))
+  (cell GND (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port Y (direction OUTPUT)))))
+  (cell TRI (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port IN (direction INPUT))
+     (port OE (direction INPUT))
+     (port OUT (direction OUTPUT))))))
+ (library work 
+  (edifLevel 0)
+  (technology (numberDefinition ))
+  (cell kirsch (cellType GENERIC)
+   (view main  (viewType NETLIST)
+    (interface 
+     (port i_clock (direction INPUT))
+     (port i_reset (direction INPUT))
+     (port i_valid (direction INPUT))
+     (port (array (rename i_pixel "i_pixel(7:0)") 8 )(direction INPUT))
+     (port o_valid (direction OUTPUT))
+     (port o_edge (direction OUTPUT))
+     (port (array (rename o_dir "o_dir(2:0)") 3 )(direction OUTPUT))
+     (port (array (rename o_mode "o_mode(1:0)") 2 )(direction OUTPUT))
+     (port (array (rename o_row "o_row(7:0)") 8 )(direction OUTPUT))
+     (port (array (rename debug_key "debug_key(3:1)") 3 )(direction INPUT))
+     (port (array (rename debug_switch "debug_switch(17:0)") 18 )(direction INPUT))
+     (port (array (rename debug_led_red "debug_led_red(17:0)") 18 )(direction OUTPUT))
+     (port (array (rename debug_led_grn "debug_led_grn(5:0)") 6 )(direction OUTPUT))
+     (port (array (rename debug_num_0 "debug_num_0(3:0)") 4 )(direction OUTPUT))
+     (port (array (rename debug_num_1 "debug_num_1(3:0)") 4 )(direction OUTPUT))
+     (port (array (rename debug_num_2 "debug_num_2(3:0)") 4 )(direction OUTPUT))
+     (port (array (rename debug_num_3 "debug_num_3(3:0)") 4 )(direction OUTPUT))
+     (port (array (rename debug_num_4 "debug_num_4(3:0)") 4 )(direction OUTPUT))
+     (port (array (rename debug_num_5 "debug_num_5(3:0)") 4 )(direction OUTPUT)))
+    (property DESIGN_IS_RTL (string "NO"))
+    (property hierarchy (string "preserve_interface_block_and_sub_blocks"))
+    (property KEEP_HIERARCHY (string "TRUE"))
+    (contents 
+     (instance ix16973z1315 (viewRef NETLIST  (cellRef NOT (libraryRef cycloneii )))
+      (property area_report (string "0")))
+     (instance debug_num_5_1_ (viewRef NETLIST  (cellRef VCC (libraryRef cycloneii ))))
+     (instance debug_num_5_0_ (viewRef NETLIST  (cellRef GND (libraryRef cycloneii ))))
+     (instance ix51998z20184 (viewRef NETLIST  (cellRef TRI (libraryRef cycloneii ))))
+     (instance o_dir_triBus1_0_ (viewRef NETLIST  (cellRef TRI (libraryRef cycloneii ))))
+     (instance o_dir_triBus1_1_ (viewRef NETLIST  (cellRef TRI (libraryRef cycloneii ))))
+     (instance o_dir_triBus1_2_ (viewRef NETLIST  (cellRef TRI (libraryRef cycloneii ))))
+     (instance o_row_triBus2_0_ (viewRef NETLIST  (cellRef TRI (libraryRef cycloneii ))))
+     (instance o_row_triBus2_1_ (viewRef NETLIST  (cellRef TRI (libraryRef cycloneii ))))
+     (instance o_row_triBus2_2_ (viewRef NETLIST  (cellRef TRI (libraryRef cycloneii ))))
+     (instance o_row_triBus2_3_ (viewRef NETLIST  (cellRef TRI (libraryRef cycloneii ))))
+     (instance o_row_triBus2_4_ (viewRef NETLIST  (cellRef TRI (libraryRef cycloneii ))))
+     (instance o_row_triBus2_5_ (viewRef NETLIST  (cellRef TRI (libraryRef cycloneii ))))
+     (instance o_row_triBus2_6_ (viewRef NETLIST  (cellRef TRI (libraryRef cycloneii ))))
+     (instance o_row_triBus2_7_ (viewRef NETLIST  (cellRef TRI (libraryRef cycloneii ))))
+     (net i_reset 
+      (joined 
+       (portRef i_reset )
+       (portRef IN1 (instanceRef ix16973z1315 ))))
+     (net o_valid 
+      (joined 
+       (portRef o_valid )
+       (portRef OUT (instanceRef ix51998z20184 ))))
+     (net o_dir_2_ 
+      (joined 
+       (portRef (member o_dir 0))
+       (portRef OUT (instanceRef o_dir_triBus1_2_ ))))
+     (net o_dir_1_ 
+      (joined 
+       (portRef (member o_dir 1))
+       (portRef OUT (instanceRef o_dir_triBus1_1_ ))))
+     (net o_dir_0_ 
+      (joined 
+       (portRef (member o_dir 2))
+       (portRef OUT (instanceRef o_dir_triBus1_0_ ))))
+     (net o_row_7_ 
+      (joined 
+       (portRef (member o_row 0))
+       (portRef OUT (instanceRef o_row_triBus2_7_ ))))
+     (net o_row_6_ 
+      (joined 
+       (portRef (member o_row 1))
+       (portRef OUT (instanceRef o_row_triBus2_6_ ))))
+     (net o_row_5_ 
+      (joined 
+       (portRef (member o_row 2))
+       (portRef OUT (instanceRef o_row_triBus2_5_ ))))
+     (net o_row_4_ 
+      (joined 
+       (portRef (member o_row 3))
+       (portRef OUT (instanceRef o_row_triBus2_4_ ))))
+     (net o_row_3_ 
+      (joined 
+       (portRef (member o_row 4))
+       (portRef OUT (instanceRef o_row_triBus2_3_ ))))
+     (net o_row_2_ 
+      (joined 
+       (portRef (member o_row 5))
+       (portRef OUT (instanceRef o_row_triBus2_2_ ))))
+     (net o_row_1_ 
+      (joined 
+       (portRef (member o_row 6))
+       (portRef OUT (instanceRef o_row_triBus2_1_ ))))
+     (net o_row_0_ 
+      (joined 
+       (portRef (member o_row 7))
+       (portRef OUT (instanceRef o_row_triBus2_0_ ))))
+     (net o_mode_1_ 
+      (joined 
+       (portRef (member o_mode 0))
+       (portRef Y (instanceRef ix16973z1315 ))))
+     (net debug_num_5_1_ 
+      (joined 
+       (portRef (member o_mode 1))
+       (portRef (member debug_num_0 1))
+       (portRef (member debug_num_0 2))
+       (portRef (member debug_num_0 3))
+       (portRef (member debug_num_1 2))
+       (portRef (member debug_num_2 2))
+       (portRef (member debug_num_2 3))
+       (portRef (member debug_num_3 0))
+       (portRef (member debug_num_3 1))
+       (portRef (member debug_num_3 2))
+       (portRef (member debug_num_4 0))
+       (portRef (member debug_num_4 1))
+       (portRef (member debug_num_5 0))
+       (portRef (member debug_num_5 1))
+       (portRef (member debug_num_5 2))
+       (portRef Y (instanceRef debug_num_5_1_ ))))
+     (net debug_num_5_0_ 
+      (joined 
+       (portRef o_edge )
+       (portRef (member debug_led_red 0))
+       (portRef (member debug_led_red 1))
+       (portRef (member debug_led_red 2))
+       (portRef (member debug_led_red 3))
+       (portRef (member debug_led_red 4))
+       (portRef (member debug_led_red 5))
+       (portRef (member debug_led_red 6))
+       (portRef (member debug_led_red 7))
+       (portRef (member debug_led_red 8))
+       (portRef (member debug_led_red 9))
+       (portRef (member debug_led_red 10))
+       (portRef (member debug_led_red 11))
+       (portRef (member debug_led_red 12))
+       (portRef (member debug_led_red 13))
+       (portRef (member debug_led_red 14))
+       (portRef (member debug_led_red 15))
+       (portRef (member debug_led_red 16))
+       (portRef (member debug_led_red 17))
+       (portRef (member debug_led_grn 0))
+       (portRef (member debug_led_grn 1))
+       (portRef (member debug_led_grn 2))
+       (portRef (member debug_led_grn 3))
+       (portRef (member debug_led_grn 4))
+       (portRef (member debug_led_grn 5))
+       (portRef (member debug_num_0 0))
+       (portRef (member debug_num_1 0))
+       (portRef (member debug_num_1 1))
+       (portRef (member debug_num_1 3))
+       (portRef (member debug_num_2 0))
+       (portRef (member debug_num_2 1))
+       (portRef (member debug_num_3 3))
+       (portRef (member debug_num_4 2))
+       (portRef (member debug_num_4 3))
+       (portRef (member debug_num_5 3))
+       (portRef Y (instanceRef debug_num_5_0_ ))
+       (portRef IN (instanceRef ix51998z20184 ))
+       (portRef OE (instanceRef ix51998z20184 ))
+       (portRef IN (instanceRef o_dir_triBus1_0_ ))
+       (portRef OE (instanceRef o_dir_triBus1_0_ ))
+       (portRef IN (instanceRef o_dir_triBus1_1_ ))
+       (portRef OE (instanceRef o_dir_triBus1_1_ ))
+       (portRef IN (instanceRef o_dir_triBus1_2_ ))
+       (portRef OE (instanceRef o_dir_triBus1_2_ ))
+       (portRef IN (instanceRef o_row_triBus2_0_ ))
+       (portRef OE (instanceRef o_row_triBus2_0_ ))
+       (portRef IN (instanceRef o_row_triBus2_1_ ))
+       (portRef OE (instanceRef o_row_triBus2_1_ ))
+       (portRef IN (instanceRef o_row_triBus2_2_ ))
+       (portRef OE (instanceRef o_row_triBus2_2_ ))
+       (portRef IN (instanceRef o_row_triBus2_3_ ))
+       (portRef OE (instanceRef o_row_triBus2_3_ ))
+       (portRef IN (instanceRef o_row_triBus2_4_ ))
+       (portRef OE (instanceRef o_row_triBus2_4_ ))
+       (portRef IN (instanceRef o_row_triBus2_5_ ))
+       (portRef OE (instanceRef o_row_triBus2_5_ ))
+       (portRef IN (instanceRef o_row_triBus2_6_ ))
+       (portRef OE (instanceRef o_row_triBus2_6_ ))
+       (portRef IN (instanceRef o_row_triBus2_7_ ))
+       (portRef OE (instanceRef o_row_triBus2_7_ ))))))))
+ (design kirsch (cellRef kirsch (libraryRef work ))))

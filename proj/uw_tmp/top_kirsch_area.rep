@@ -1,0 +1,49 @@
+//  Precision RTL Synthesis 64-bit 2015.2.16 (PS2015.2.1 Production Release) Tue Jan  5 23:04:49 PST 2016
+//  
+//  Copyright (c) Mentor Graphics Corporation, 1996-2016, All Rights Reserved.
+//             Portions copyright 1991-2008 Compuware Corporation
+//                       UNPUBLISHED, LICENSED SOFTWARE.
+//            CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//          PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+//  
+//  Running on Linux kkgajjal@eceLinux3.uwaterloo.ca #1 SMP Tue Jan 19 09:14:52 EST 2016 2.6.18-408.el5 x86_64
+//  
+//  Start time Wed Mar 23 15:43:43 2016
+
+***************************************************************
+Device Utilization for EP2C35F672C
+***************************************************************
+Resource                          Used    Avail   Utilization
+---------------------------------------------------------------
+IOs                               115     -            -
+LUTs                              113     33216     0.34%
+Registers                         80      33216     0.24%
+Memory Bits                       0       483840    0.00%
+DSP block 9-bit elems             0       70        0.00%
+---------------------------------------------------------------
+
+***********************************************
+
+Library: work    Cell: top_kirsch    View: main
+
+***********************************************
+
+  Cell      Library  References     Total Area
+
+ GND        cycloneii     1 x
+ NOT        cycloneii     1 x
+ VCC        cycloneii     1 x
+ kirsch     work          1 x      0      0 LCs
+ uw_uart    work          1 x     80     80 Registers
+                                 113    113 LUTs
+
+ Number of ports :                     115
+ Number of nets :                        8
+ Number of instances :                   5
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of LCs :                         0
+ Number of LUTs :                      113
+ Number of Registers :                  80
+ Number of accumulated instances :     209

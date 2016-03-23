@@ -1,0 +1,28 @@
+<interfaceDefinition version='1.2' language='vhdl' kind='component' name='kirsch'>
+  <useClause path='work.state_pkg.all' />
+  <useClause path='ieee.NUMERIC_STD.all' />
+  <useClause path='ieee.std_logic_1164.all' />
+    <portList>
+
+      <port name='i_clock' direction='in' type='STD_LOGIC' kind='' />
+      <port name='i_reset' direction='in' type='STD_LOGIC' kind='' />
+      <port name='i_valid' direction='in' type='STD_LOGIC' kind='' />
+      <port name='i_pixel' direction='in' type='std_logic_vector (7 downto 0)' kind='array' library='work' package='kirsch' packedDimension='(7 downto 0)' />
+      <port name='o_valid' direction='out' type='STD_LOGIC' kind='' />
+      <port name='o_edge' direction='out' type='STD_LOGIC' kind='' />
+      <port name='o_dir' direction='out' type='std_logic_vector (2 downto 0)' kind='array' library='work' package='kirsch' packedDimension='(2 downto 0)' />
+      <port name='o_mode' direction='out' type='std_logic_vector (1 downto 0)' kind='array' library='work' package='kirsch' packedDimension='(1 downto 0)' />
+      <port name='o_row' direction='out' type='std_logic_vector (7 downto 0)' kind='array' library='work' package='kirsch' packedDimension='(7 downto 0)' />
+      <port name='debug_key' direction='in' type='std_logic_vector (3 downto 1)' kind='array' library='work' package='kirsch' packedDimension='(3 downto 1)' />
+      <port name='debug_switch' direction='in' type='std_logic_vector (17 downto 0)' kind='array' library='work' package='kirsch' packedDimension='(17 downto 0)' />
+      <port name='debug_led_red' direction='out' type='std_logic_vector (17 downto 0)' kind='array' library='work' package='kirsch' packedDimension='(17 downto 0)' />
+      <port name='debug_led_grn' direction='out' type='std_logic_vector (5 downto 0)' kind='array' library='work' package='kirsch' packedDimension='(5 downto 0)' />
+      <port name='debug_num_0' direction='out' type='std_logic_vector (3 downto 0)' kind='array' library='work' package='kirsch' packedDimension='(3 downto 0)' />
+      <port name='debug_num_1' direction='out' type='std_logic_vector (3 downto 0)' kind='array' library='work' package='kirsch' packedDimension='(3 downto 0)' />
+      <port name='debug_num_2' direction='out' type='std_logic_vector (3 downto 0)' kind='array' library='work' package='kirsch' packedDimension='(3 downto 0)' />
+      <port name='debug_num_3' direction='out' type='std_logic_vector (3 downto 0)' kind='array' library='work' package='kirsch' packedDimension='(3 downto 0)' />
+      <port name='debug_num_4' direction='out' type='std_logic_vector (3 downto 0)' kind='array' library='work' package='kirsch' packedDimension='(3 downto 0)' />
+      <port name='debug_num_5' direction='out' type='std_logic_vector (3 downto 0)' kind='array' library='work' package='kirsch' packedDimension='(3 downto 0)' />
+
+    </portList>
+</interfaceDefinition>

@@ -1,0 +1,117 @@
+Flow report for top_kirsch
+Wed Mar 23 15:44:19 2016
+Quartus II Version 10.1 Build 153 11/29/2010 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------+
+; Flow Summary                                                                   ;
++------------------------------------+-------------------------------------------+
+; Flow Status                        ; Successful - Wed Mar 23 15:44:19 2016     ;
+; Quartus II Version                 ; 10.1 Build 153 11/29/2010 SJ Full Version ;
+; Revision Name                      ; top_kirsch                                ;
+; Top-level Entity Name              ; top_kirsch                                ;
+; Family                             ; Cyclone II                                ;
+; Total logic elements               ; 121 / 33,216 ( < 1 % )                    ;
+;     Total combinational functions  ; 117 / 33,216 ( < 1 % )                    ;
+;     Dedicated logic registers      ; 80 / 33,216 ( < 1 % )                     ;
+; Total registers                    ; 80                                        ;
+; Total pins                         ; 115 / 475 ( 24 % )                        ;
+; Total virtual pins                 ; 0                                         ;
+; Total memory bits                  ; 0 / 483,840 ( 0 % )                       ;
+; Embedded Multiplier 9-bit elements ; 0 / 70 ( 0 % )                            ;
+; Total PLLs                         ; 0 / 4 ( 0 % )                             ;
+; Device                             ; EP2C35F672C7                              ;
+; Timing Models                      ; Final                                     ;
++------------------------------------+-------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 03/23/2016 15:43:59 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; top_kirsch          ;
++-------------------+---------------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                  ;
++-----------------------+--------------------------------+---------------+-------------+------------+
+; Assignment Name       ; Value                          ; Default Value ; Entity Name ; Section Id ;
++-----------------------+--------------------------------+---------------+-------------+------------+
+; COMPILER_SIGNATURE_ID ; 22930452121624.145876223911282 ; --            ; --          ; --         ;
++-----------------------+--------------------------------+---------------+-------------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:00:01     ; 1.0                     ; --                  ; 00:00:01                           ;
+; Fitter               ; 00:00:07     ; 1.0                     ; --                  ; 00:00:09                           ;
+; Assembler            ; 00:00:03     ; 1.0                     ; --                  ; 00:00:03                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; --                  ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; --                  ; 00:00:01                           ;
+; Total                ; 00:00:11     ; --                      ; --                  ; 00:00:15                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++----------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                              ;
++----------------------+------------------------+----------------+------------+----------------+
+; Module Name          ; Machine Hostname       ; OS Name        ; OS Version ; Processor type ;
++----------------------+------------------------+----------------+------------+----------------+
+; Analysis & Synthesis ; eceLinux3.uwaterloo.ca ; CentOS release ; 5          ; x86_64         ;
+; Fitter               ; eceLinux3.uwaterloo.ca ; CentOS release ; 5          ; x86_64         ;
+; Assembler            ; eceLinux3.uwaterloo.ca ; CentOS release ; 5          ; x86_64         ;
+; EDA Netlist Writer   ; eceLinux3.uwaterloo.ca ; CentOS release ; 5          ; x86_64         ;
+; EDA Netlist Writer   ; eceLinux3.uwaterloo.ca ; CentOS release ; 5          ; x86_64         ;
++----------------------+------------------------+----------------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map top_kirsch --source=top_kirsch_logic.edf --family=CycloneII
+quartus_fit top_kirsch --effort=fast --part=EP2C35F672C7
+quartus_asm top_kirsch
+quartus_eda top_kirsch --simulation=on --tool=modelsim --format=vhdl
+quartus_eda top_kirsch --simulation=on --tool=modelsim --format=verilog
+
+
+

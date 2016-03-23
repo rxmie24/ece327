@@ -1,0 +1,39 @@
+Quartus II
+Version 10.1 Build 153 11/29/2010 SJ Full Version
+14
+4554
+OFF
+OFF
+OFF
+ON
+ON
+ON
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+kirsch
+# storage
+db|kirsch.(0).cnf
+db|kirsch.(0).cnf
+# case_insensitive
+# source_file
+kirsch_logic.edf
+a1a7eb14c12d6ca696cf7fc1c52d24b6
+10
+# hierarchies {
+|
+}
+# macro_sequence
+
+# end
+# complete
+

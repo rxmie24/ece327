@@ -1,0 +1,87 @@
+Quartus II
+Version 10.1 Build 153 11/29/2010 SJ Full Version
+14
+4554
+OFF
+OFF
+OFF
+ON
+ON
+ON
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+top_kirsch
+# storage
+db|top_kirsch.(0).cnf
+db|top_kirsch.(0).cnf
+# case_insensitive
+# source_file
+top_kirsch_logic.edf
+e634d8e62baec8c55a53bd4b9cbeee2
+10
+# hierarchies {
+|
+}
+# macro_sequence
+
+# end
+# entity
+kirsch
+# storage
+db|top_kirsch.(1).cnf
+db|top_kirsch.(1).cnf
+# case_insensitive
+# source_file
+top_kirsch_logic.edf
+e634d8e62baec8c55a53bd4b9cbeee2
+10
+# hierarchies {
+kirsch:u_kirsch
+}
+# macro_sequence
+
+# end
+# entity
+uw_uart
+# storage
+db|top_kirsch.(2).cnf
+db|top_kirsch.(2).cnf
+# case_insensitive
+# source_file
+top_kirsch_logic.edf
+e634d8e62baec8c55a53bd4b9cbeee2
+10
+# hierarchies {
+uw_uart:u_uw_uart
+}
+# macro_sequence
+
+# end
+# entity
+UARTS
+# storage
+db|top_kirsch.(3).cnf
+db|top_kirsch.(3).cnf
+# case_insensitive
+# source_file
+top_kirsch_logic.edf
+e634d8e62baec8c55a53bd4b9cbeee2
+10
+# hierarchies {
+uw_uart:u_uw_uart|UARTS:i_uarts
+}
+# macro_sequence
+
+# end
+# complete
+

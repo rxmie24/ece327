@@ -1,0 +1,97 @@
+//  Precision RTL Synthesis 64-bit 2015.2.16 (PS2015.2.1 Production Release) Tue Jan  5 23:04:49 PST 2016
+//  
+//  Copyright (c) Mentor Graphics Corporation, 1996-2016, All Rights Reserved.
+//             Portions copyright 1991-2008 Compuware Corporation
+//                       UNPUBLISHED, LICENSED SOFTWARE.
+//            CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//          PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+//  
+//  Running on Linux kkgajjal@eceLinux3.uwaterloo.ca #1 SMP Tue Jan 19 09:14:52 EST 2016 2.6.18-408.el5 x86_64
+//  
+//  Start time Wed Mar 23 15:43:43 2016
+
+-- Device: Altera - Cyclone II : EP2C35F672C : 7
+-- CTE report summary..
+-- POST-SYNTHESIS TIMING REPORTS ARE ESTIMATES AND SHOULD NOT BE RELIED ON TO MAKE QoR DECISIONS. For accurate timing information, please run place-and-route (P&R) and review P&R generated timing reports.
+
+================================================================================================
+                   Clock Frequency Report
+
+	Domain                  Clock Name                            Min Period (Freq)             Required Period (Freq)
+	------                  ----------                            -----------------             ----------------------
+	ClockDomain0            clk                                   3.632 (275.330 MHz)           20.000 (50.000 MHz)
+
+
+================================================================================================
+Setup Timing Analysis of clk
+
+Setup Slack Path Summary
+
+               Data                                                                    Data
+       Setup   Path   Source  Dest.                                                    End 
+Index  Slack   Delay  Clock   Clock      Data Start Pin            Data End Pin        Edge
+-----  ------  -----  ------  -----  -----------------------  -----------------------  ----
+  1    16.368  3.052  clk     clk    u_uw_uart/reg_q(15)/clk  u_uw_uart/reg_q(9)/sclr  Rise
+  2    16.391  3.029  clk     clk    u_uw_uart/reg_q(11)/clk  u_uw_uart/reg_q(9)/sclr  Rise
+  3    16.391  3.029  clk     clk    u_uw_uart/reg_q(14)/clk  u_uw_uart/reg_q(9)/sclr  Rise
+  4    16.414  3.006  clk     clk    u_uw_uart/reg_q(10)/clk  u_uw_uart/reg_q(9)/sclr  Rise
+  5    16.591  2.829  clk     clk    u_uw_uart/reg_q(7)/clk   u_uw_uart/reg_q(9)/sclr  Rise
+  6    16.591  2.829  clk     clk    u_uw_uart/reg_q(13)/clk  u_uw_uart/reg_q(9)/sclr  Rise
+  7    16.614  2.806  clk     clk    u_uw_uart/reg_q(9)/clk   u_uw_uart/reg_q(9)/sclr  Rise
+  8    16.614  2.806  clk     clk    u_uw_uart/reg_q(6)/clk   u_uw_uart/reg_q(9)/sclr  Rise
+  9    16.735  2.685  clk     clk    u_uw_uart/reg_q(12)/clk  u_uw_uart/reg_q(9)/sclr  Rise
+ 10    16.735  2.685  clk     clk    u_uw_uart/reg_q(3)/clk   u_uw_uart/reg_q(9)/sclr  Rise
+
+                  CTE Path Report
+
+
+Critical path #1, (path slack = 16.368):
+
+SOURCE CLOCK: name: clk period: 20.000000
+     Times are relative to the 1st rising edge
+  DEST CLOCK: name: clk period: 20.000000
+     Times are relative to the 2nd rising edge
+
+NAME                               GATE                     DELAY    ARRIVAL DIR  FANOUT
+u_uw_uart/reg_q(15)/clk         cycloneii_lcell_ff                   0.000   up
+u_uw_uart/reg_q(15)/regout      cycloneii_lcell_ff         0.000     0.000   up
+u_uw_uart/waitcount(15)         (net)                      0.290                   2
+u_uw_uart/ix39480z52925/dataa   cycloneii_lcell_comb                 0.290   up
+u_uw_uart/ix39480z52925/combout cycloneii_lcell_comb       0.545     0.835   up
+u_uw_uart/nx39480z3             (net)                      0.270                   1
+u_uw_uart/ix39480z52924/dataa   cycloneii_lcell_comb                 1.105   up
+u_uw_uart/ix39480z52924/combout cycloneii_lcell_comb       0.545     1.650   up
+u_uw_uart/nx39480z2             (net)                      0.310                   3
+u_uw_uart/ix21084z52924/datab   cycloneii_lcell_comb                 1.960   up
+u_uw_uart/ix21084z52924/combout cycloneii_lcell_comb       0.522     2.482   up
+u_uw_uart/nx21084z2             (net)                      0.570                  16
+u_uw_uart/reg_q(9)/sclr         cycloneii_lcell_ff                   3.052   up
+
+		Initial edge separation:     20.000
+		Source clock delay:      -    0.000
+		Dest clock delay:        +    0.000
+		                        -----------
+		Edge separation:             20.000
+		Setup constraint:        -    0.580
+		                        -----------
+		Data required time:          19.420
+		Data arrival time:       -    3.052   ( 52.82% cell delay, 47.18% net delay )
+		                        -----------
+		Slack:                       16.368
+
+
+
+================================================================================================
+                   Input Delay Report
+
+	Input                  Clock Name                            Slack (ns)
+	-----                  ----------                            ----------
+	No input delay constraints.
+
+
+================================================================================================
+                   Output Delay Report
+
+	Output                 Clock Name                            Slack (ns)
+	------                 ----------                            ----------
+	No output delay constraints.

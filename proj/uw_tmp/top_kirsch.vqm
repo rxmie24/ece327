@@ -1,0 +1,950 @@
+//
+// Verilog description for cell top_kirsch, 
+// Wed Mar 23 15:43:51 2016
+//
+// Precision RTL Synthesis, 64-bit 2015.2.16//
+
+
+module top_kirsch ( nrst, clk, rxflex, txflex, o_sevenseg, o_mode, o_nrst, 
+                    debug_key, debug_switch, debug_led_red, debug_led_grn, 
+                    debug_sevenseg_0, debug_sevenseg_1, debug_sevenseg_2, 
+                    debug_sevenseg_3, debug_sevenseg_4, debug_sevenseg_5 ) ;
+
+    input nrst ;
+    input clk ;
+    input rxflex ;
+    output txflex ;
+    output [15:0]o_sevenseg ;
+    output [1:0]o_mode ;
+    output o_nrst ;
+    input [3:1]debug_key ;
+    input [17:0]debug_switch ;
+    output [16:0]debug_led_red ;
+    output [5:0]debug_led_grn ;
+    output [7:0]debug_sevenseg_0 ;
+    output [7:0]debug_sevenseg_1 ;
+    output [7:0]debug_sevenseg_2 ;
+    output [7:0]debug_sevenseg_3 ;
+    output [7:0]debug_sevenseg_4 ;
+    output [7:0]debug_sevenseg_5 ;
+
+    wire [91:0] xmplr_dummy ;
+
+
+
+
+    assign o_sevenseg[13] = o_sevenseg[14] ;
+    assign o_sevenseg[12] = o_sevenseg[14] ;
+    assign o_sevenseg[11] = o_sevenseg[14] ;
+    assign o_sevenseg[10] = o_sevenseg[14] ;
+    assign o_sevenseg[9] = o_sevenseg[14] ;
+    assign o_sevenseg[8] = o_sevenseg[15] ;
+    assign o_sevenseg[7] = o_sevenseg[15] ;
+    assign o_sevenseg[6] = o_sevenseg[14] ;
+    assign o_sevenseg[5] = o_sevenseg[14] ;
+    assign o_sevenseg[4] = o_sevenseg[14] ;
+    assign o_sevenseg[3] = o_sevenseg[14] ;
+    assign o_sevenseg[2] = o_sevenseg[14] ;
+    assign o_sevenseg[1] = o_sevenseg[14] ;
+    assign o_sevenseg[0] = o_sevenseg[15] ;
+    assign o_mode[0] = o_sevenseg[15] ;
+    assign debug_led_red[16] = o_sevenseg[14] ;
+    assign debug_led_red[15] = o_sevenseg[14] ;
+    assign debug_led_red[14] = o_sevenseg[14] ;
+    assign debug_led_red[13] = o_sevenseg[14] ;
+    assign debug_led_red[12] = o_sevenseg[14] ;
+    assign debug_led_red[11] = o_sevenseg[14] ;
+    assign debug_led_red[10] = o_sevenseg[14] ;
+    assign debug_led_red[9] = o_sevenseg[14] ;
+    assign debug_led_red[8] = o_sevenseg[14] ;
+    assign debug_led_red[7] = o_sevenseg[14] ;
+    assign debug_led_red[6] = o_sevenseg[14] ;
+    assign debug_led_red[5] = o_sevenseg[14] ;
+    assign debug_led_red[4] = o_sevenseg[14] ;
+    assign debug_led_red[3] = o_sevenseg[14] ;
+    assign debug_led_red[2] = o_sevenseg[14] ;
+    assign debug_led_red[1] = o_sevenseg[14] ;
+    assign debug_led_red[0] = o_sevenseg[14] ;
+    assign debug_led_grn[5] = o_sevenseg[14] ;
+    assign debug_led_grn[4] = o_sevenseg[14] ;
+    assign debug_led_grn[3] = o_sevenseg[14] ;
+    assign debug_led_grn[2] = o_sevenseg[14] ;
+    assign debug_led_grn[1] = o_sevenseg[14] ;
+    assign debug_led_grn[0] = o_sevenseg[14] ;
+    assign debug_sevenseg_0[7] = o_sevenseg[15] ;
+    assign debug_sevenseg_0[6] = o_sevenseg[14] ;
+    assign debug_sevenseg_0[5] = o_sevenseg[14] ;
+    assign debug_sevenseg_0[4] = o_sevenseg[14] ;
+    assign debug_sevenseg_0[3] = o_sevenseg[15] ;
+    assign debug_sevenseg_0[2] = o_sevenseg[15] ;
+    assign debug_sevenseg_0[1] = o_sevenseg[15] ;
+    assign debug_sevenseg_0[0] = o_sevenseg[15] ;
+    assign debug_sevenseg_1[7] = o_sevenseg[15] ;
+    assign debug_sevenseg_1[6] = o_sevenseg[14] ;
+    assign debug_sevenseg_1[5] = o_sevenseg[14] ;
+    assign debug_sevenseg_1[4] = o_sevenseg[15] ;
+    assign debug_sevenseg_1[3] = o_sevenseg[14] ;
+    assign debug_sevenseg_1[2] = o_sevenseg[14] ;
+    assign debug_sevenseg_1[1] = o_sevenseg[15] ;
+    assign debug_sevenseg_1[0] = o_sevenseg[14] ;
+    assign debug_sevenseg_2[7] = o_sevenseg[15] ;
+    assign debug_sevenseg_2[6] = o_sevenseg[14] ;
+    assign debug_sevenseg_2[5] = o_sevenseg[14] ;
+    assign debug_sevenseg_2[4] = o_sevenseg[14] ;
+    assign debug_sevenseg_2[3] = o_sevenseg[14] ;
+    assign debug_sevenseg_2[2] = o_sevenseg[15] ;
+    assign debug_sevenseg_2[1] = o_sevenseg[15] ;
+    assign debug_sevenseg_2[0] = o_sevenseg[14] ;
+    assign debug_sevenseg_3[7] = o_sevenseg[15] ;
+    assign debug_sevenseg_3[6] = o_sevenseg[14] ;
+    assign debug_sevenseg_3[5] = o_sevenseg[15] ;
+    assign debug_sevenseg_3[4] = o_sevenseg[15] ;
+    assign debug_sevenseg_3[3] = o_sevenseg[14] ;
+    assign debug_sevenseg_3[2] = o_sevenseg[14] ;
+    assign debug_sevenseg_3[1] = o_sevenseg[14] ;
+    assign debug_sevenseg_3[0] = o_sevenseg[14] ;
+    assign debug_sevenseg_4[7] = o_sevenseg[15] ;
+    assign debug_sevenseg_4[6] = o_sevenseg[14] ;
+    assign debug_sevenseg_4[5] = o_sevenseg[15] ;
+    assign debug_sevenseg_4[4] = o_sevenseg[15] ;
+    assign debug_sevenseg_4[3] = o_sevenseg[14] ;
+    assign debug_sevenseg_4[2] = o_sevenseg[14] ;
+    assign debug_sevenseg_4[1] = o_sevenseg[14] ;
+    assign debug_sevenseg_4[0] = o_sevenseg[15] ;
+    assign debug_sevenseg_5[7] = o_sevenseg[15] ;
+    assign debug_sevenseg_5[6] = o_sevenseg[14] ;
+    assign debug_sevenseg_5[5] = o_sevenseg[15] ;
+    assign debug_sevenseg_5[4] = o_sevenseg[15] ;
+    assign debug_sevenseg_5[3] = o_sevenseg[14] ;
+    assign debug_sevenseg_5[2] = o_sevenseg[14] ;
+    assign debug_sevenseg_5[1] = o_sevenseg[14] ;
+    assign debug_sevenseg_5[0] = o_sevenseg[14] ;
+    uw_uart u_uw_uart (.clk (clk), .rst (o_nrst), .kirschout (o_sevenseg[15]), .kirschdir (
+            {o_sevenseg[14],o_sevenseg[14],o_sevenseg[14]}), .o_valid (
+            o_sevenseg[14]), .i_mode ({o_mode[1],o_sevenseg[15]}), .rxflex (
+            rxflex), .txflex (txflex)) ;
+    kirsch u_kirsch (.i_clock (o_sevenseg[14]), .i_reset (o_nrst), .i_valid (
+           o_sevenseg[14]), .i_pixel ({o_sevenseg[14],o_sevenseg[14],
+           o_sevenseg[14],o_sevenseg[14],o_sevenseg[14],o_sevenseg[14],
+           o_sevenseg[14],o_sevenseg[14]}), .o_mode ({o_mode[1],xmplr_dummy [0]}
+           )) ;
+    assign o_nrst = ~nrst ;
+    assign o_sevenseg[15] = 1'b1 ;
+    assign o_sevenseg[14] = 1'b0 ;
+endmodule
+
+
+module kirsch ( i_clock, i_reset, i_valid, i_pixel, o_valid, o_edge, o_dir, 
+                o_mode, o_row, debug_key, debug_switch, debug_led_red, 
+                debug_led_grn, debug_num_0, debug_num_1, debug_num_2, 
+                debug_num_3, debug_num_4, debug_num_5 ) ;
+
+    input i_clock ;
+    input i_reset ;
+    input i_valid ;
+    input [7:0]i_pixel ;
+    output o_valid ;
+    output o_edge ;
+    output [2:0]o_dir ;
+    output [1:0]o_mode ;
+    output [7:0]o_row ;
+    input [3:1]debug_key ;
+    input [17:0]debug_switch ;
+    output [17:0]debug_led_red ;
+    output [5:0]debug_led_grn ;
+    output [3:0]debug_num_0 ;
+    output [3:0]debug_num_1 ;
+    output [3:0]debug_num_2 ;
+    output [3:0]debug_num_3 ;
+    output [3:0]debug_num_4 ;
+    output [3:0]debug_num_5 ;
+
+
+
+
+    assign o_dir[2] = o_valid ;
+    assign o_dir[1] = o_valid ;
+    assign o_dir[0] = o_valid ;
+    assign o_mode[0] = o_edge ;
+    assign o_row[7] = o_valid ;
+    assign o_row[6] = o_valid ;
+    assign o_row[5] = o_valid ;
+    assign o_row[4] = o_valid ;
+    assign o_row[3] = o_valid ;
+    assign o_row[2] = o_valid ;
+    assign o_row[1] = o_valid ;
+    assign o_row[0] = o_valid ;
+    assign debug_led_red[17] = o_valid ;
+    assign debug_led_red[16] = o_valid ;
+    assign debug_led_red[15] = o_valid ;
+    assign debug_led_red[14] = o_valid ;
+    assign debug_led_red[13] = o_valid ;
+    assign debug_led_red[12] = o_valid ;
+    assign debug_led_red[11] = o_valid ;
+    assign debug_led_red[10] = o_valid ;
+    assign debug_led_red[9] = o_valid ;
+    assign debug_led_red[8] = o_valid ;
+    assign debug_led_red[7] = o_valid ;
+    assign debug_led_red[6] = o_valid ;
+    assign debug_led_red[5] = o_valid ;
+    assign debug_led_red[4] = o_valid ;
+    assign debug_led_red[3] = o_valid ;
+    assign debug_led_red[2] = o_valid ;
+    assign debug_led_red[1] = o_valid ;
+    assign debug_led_red[0] = o_valid ;
+    assign debug_led_grn[5] = o_valid ;
+    assign debug_led_grn[4] = o_valid ;
+    assign debug_led_grn[3] = o_valid ;
+    assign debug_led_grn[2] = o_valid ;
+    assign debug_led_grn[1] = o_valid ;
+    assign debug_led_grn[0] = o_valid ;
+    assign debug_num_0[3] = o_valid ;
+    assign debug_num_0[2] = o_edge ;
+    assign debug_num_0[1] = o_edge ;
+    assign debug_num_0[0] = o_edge ;
+    assign debug_num_1[3] = o_valid ;
+    assign debug_num_1[2] = o_valid ;
+    assign debug_num_1[1] = o_edge ;
+    assign debug_num_1[0] = o_valid ;
+    assign debug_num_2[3] = o_valid ;
+    assign debug_num_2[2] = o_valid ;
+    assign debug_num_2[1] = o_edge ;
+    assign debug_num_2[0] = o_edge ;
+    assign debug_num_3[3] = o_edge ;
+    assign debug_num_3[2] = o_edge ;
+    assign debug_num_3[1] = o_edge ;
+    assign debug_num_3[0] = o_valid ;
+    assign debug_num_4[3] = o_edge ;
+    assign debug_num_4[2] = o_edge ;
+    assign debug_num_4[1] = o_valid ;
+    assign debug_num_4[0] = o_valid ;
+    assign debug_num_5[3] = o_edge ;
+    assign debug_num_5[2] = o_edge ;
+    assign debug_num_5[1] = o_edge ;
+    assign debug_num_5[0] = o_valid ;
+    assign o_mode[1] = ~i_reset ;
+    assign o_edge = 1'b1 ;
+    assign o_valid = 1'b0 ;
+endmodule
+
+
+module uw_uart ( clk, rst, kirschout, kirschdir, o_valid, i_mode, datain, 
+                 o_pixavail, rxflex, txflex ) ;
+
+    input clk ;
+    input rst ;
+    input kirschout ;
+    input [2:0]kirschdir ;
+    input o_valid ;
+    input [1:0]i_mode ;
+    output [7:0]datain ;
+    output o_pixavail ;
+    input rxflex ;
+    output txflex ;
+
+    wire o_pixavail_dup_0, rxerr, rxrdy, sdout_6_, sdout_4_, sdout_0_, state, 
+         dsend, mdata_7_, mdata_0_, ack;
+    wire [15:0]waitcount;
+    wire ld_sdout, inc_d_0_, nx22081z15, inc_d_1_, nx22081z14, inc_d_2_, 
+         nx22081z13, inc_d_3_, nx22081z12, inc_d_4_, nx22081z11, inc_d_5_, 
+         nx22081z10, inc_d_6_, nx22081z9, inc_d_7_, nx22081z8, inc_d_8_, 
+         nx22081z7, inc_d_9_, nx22081z6, inc_d_10_, nx22081z5, inc_d_11_, 
+         nx22081z4, inc_d_12_, nx22081z3, inc_d_13_, nx22081z2, inc_d_14_, 
+         nx22081z1, inc_d_15_, rawrx, PWR, nx46385z3, nx39480z2, nx21084z2, 
+         nx46385z1, nx38650z1, nx21084z1, nx58116z1, nx39480z1, nx18433z1, 
+         nx33757z1, nx39739z1, nx45847z1, nx41859z1, nx39865z1, nx39480z3, 
+         nx39480z4, nx39480z5, nx39480z6, nx46385z2, nx33757z2, nx33757z3;
+    wire [253:0] xmplr_dummy ;
+
+
+
+
+    assign datain[6] = datain[7] ;
+    assign datain[5] = datain[7] ;
+    assign datain[4] = datain[7] ;
+    assign datain[3] = datain[7] ;
+    assign datain[2] = datain[7] ;
+    assign datain[1] = datain[7] ;
+    assign datain[0] = datain[7] ;
+    assign o_pixavail = datain[7] ;
+    UARTS i_uarts (.CLK (clk), .RST (rst), .Din ({sdout_6_,datain[7],sdout_4_,
+          datain[7],sdout_0_,datain[7],datain[7],datain[7]}), .LD (ld_sdout), .Rx (
+          rawrx), .Baud (PWR), .Tx (txflex), .RxErr (rxerr), .RxRDY (rxrdy)) ;
+    assign datain[7] = 1'b0 ;
+    assign PWR = 1'b1 ;
+    cycloneii_lcell_ff reg_state (.regout (state), .datain (nx38650z1), .clk (
+                       clk), .aclr (rst)) ;
+    cycloneii_lcell_ff reg_sdout_6_ (.regout (sdout_6_), .datain (nx39865z1), .clk (
+                       clk), .aclr (rst)) ;
+    cycloneii_lcell_ff reg_sdout_4_ (.regout (sdout_4_), .datain (nx41859z1), .clk (
+                       clk), .aclr (rst)) ;
+    cycloneii_lcell_ff reg_sdout_0_ (.regout (sdout_0_), .datain (nx45847z1), .clk (
+                       clk), .aclr (rst)) ;
+    cycloneii_lcell_ff reg_q_9_ (.regout (waitcount[9]), .datain (inc_d_9_), .clk (
+                       clk), .ena (nx21084z1), .sclr (nx21084z2)) ;
+    cycloneii_lcell_ff reg_q_8_ (.regout (waitcount[8]), .datain (inc_d_8_), .clk (
+                       clk), .ena (nx21084z1), .sclr (nx21084z2)) ;
+    cycloneii_lcell_ff reg_q_7_ (.regout (waitcount[7]), .datain (inc_d_7_), .clk (
+                       clk), .ena (nx21084z1), .sclr (nx21084z2)) ;
+    cycloneii_lcell_ff reg_q_6_ (.regout (waitcount[6]), .datain (inc_d_6_), .clk (
+                       clk), .ena (nx21084z1), .sclr (nx21084z2)) ;
+    cycloneii_lcell_ff reg_q_5_ (.regout (waitcount[5]), .datain (inc_d_5_), .clk (
+                       clk), .ena (nx21084z1), .sclr (nx21084z2)) ;
+    cycloneii_lcell_ff reg_q_4_ (.regout (waitcount[4]), .datain (inc_d_4_), .clk (
+                       clk), .ena (nx21084z1), .sclr (nx21084z2)) ;
+    cycloneii_lcell_ff reg_q_3_ (.regout (waitcount[3]), .datain (inc_d_3_), .clk (
+                       clk), .ena (nx21084z1), .sclr (nx21084z2)) ;
+    cycloneii_lcell_ff reg_q_2_ (.regout (waitcount[2]), .datain (inc_d_2_), .clk (
+                       clk), .ena (nx21084z1), .sclr (nx21084z2)) ;
+    cycloneii_lcell_ff reg_q_15_ (.regout (waitcount[15]), .datain (inc_d_15_), 
+                       .clk (clk), .ena (nx21084z1), .sclr (nx21084z2)) ;
+    cycloneii_lcell_ff reg_q_14_ (.regout (waitcount[14]), .datain (inc_d_14_), 
+                       .clk (clk), .ena (nx21084z1), .sclr (nx21084z2)) ;
+    cycloneii_lcell_ff reg_q_13_ (.regout (waitcount[13]), .datain (inc_d_13_), 
+                       .clk (clk), .ena (nx21084z1), .sclr (nx21084z2)) ;
+    cycloneii_lcell_ff reg_q_12_ (.regout (waitcount[12]), .datain (inc_d_12_), 
+                       .clk (clk), .ena (nx21084z1), .sclr (nx21084z2)) ;
+    cycloneii_lcell_ff reg_q_11_ (.regout (waitcount[11]), .datain (inc_d_11_), 
+                       .clk (clk), .ena (nx21084z1), .sclr (nx21084z2)) ;
+    cycloneii_lcell_ff reg_q_10_ (.regout (waitcount[10]), .datain (inc_d_10_), 
+                       .clk (clk), .ena (nx21084z1), .sclr (nx21084z2)) ;
+    cycloneii_lcell_ff reg_q_1_ (.regout (waitcount[1]), .datain (inc_d_1_), .clk (
+                       clk), .ena (nx21084z1), .sclr (nx21084z2)) ;
+    cycloneii_lcell_ff reg_q_0_ (.regout (waitcount[0]), .datain (inc_d_0_), .clk (
+                       clk), .ena (nx21084z1), .sclr (nx21084z2)) ;
+    cycloneii_lcell_ff reg_mdata_6_ (.regout (mdata_7_), .datain (nx39739z1), .clk (
+                       clk)) ;
+    cycloneii_lcell_ff reg_mdata_0_ (.regout (mdata_0_), .datain (nx33757z1), .clk (
+                       clk)) ;
+    cycloneii_lcell_ff reg_ld_sdout (.regout (ld_sdout), .datain (nx18433z1), .clk (
+                       clk), .aclr (rst)) ;
+    cycloneii_lcell_ff reg_dsend (.regout (dsend), .datain (nx46385z1), .clk (
+                       clk)) ;
+    cycloneii_lcell_ff reg_charavail (.regout (o_pixavail_dup_0), .datain (
+                       nx58116z1), .clk (clk), .aclr (rst)) ;
+    cycloneii_lcell_ff reg_ack (.regout (ack), .datain (nx39480z1), .clk (clk)
+                       ) ;
+    cycloneii_lcell_comb ix22081z52923 (.combout (inc_d_15_), .dataa (
+                         waitcount[15]), .datad (PWR), .cin (nx22081z1)) ;
+                         defparam ix22081z52923.lut_mask = 16'h5a5a;
+                         defparam ix22081z52923.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix22081z52925 (.combout (inc_d_14_), .cout (nx22081z1)
+                         , .dataa (waitcount[14]), .datad (PWR), .cin (nx22081z2
+                         )) ;
+                         defparam ix22081z52925.lut_mask = 16'h5aa0;
+                         defparam ix22081z52925.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix22081z52926 (.combout (inc_d_13_), .cout (nx22081z2)
+                         , .dataa (waitcount[13]), .datad (PWR), .cin (nx22081z3
+                         )) ;
+                         defparam ix22081z52926.lut_mask = 16'h5aa0;
+                         defparam ix22081z52926.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix22081z52927 (.combout (inc_d_12_), .cout (nx22081z3)
+                         , .dataa (waitcount[12]), .datad (PWR), .cin (nx22081z4
+                         )) ;
+                         defparam ix22081z52927.lut_mask = 16'h5aa0;
+                         defparam ix22081z52927.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix22081z52928 (.combout (inc_d_11_), .cout (nx22081z4)
+                         , .dataa (waitcount[11]), .datad (PWR), .cin (nx22081z5
+                         )) ;
+                         defparam ix22081z52928.lut_mask = 16'h5aa0;
+                         defparam ix22081z52928.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix22081z52929 (.combout (inc_d_10_), .cout (nx22081z5)
+                         , .dataa (waitcount[10]), .datad (PWR), .cin (nx22081z6
+                         )) ;
+                         defparam ix22081z52929.lut_mask = 16'h5aa0;
+                         defparam ix22081z52929.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix22081z52931 (.combout (inc_d_8_), .cout (nx22081z7), 
+                         .dataa (waitcount[8]), .datad (PWR), .cin (nx22081z8)
+                         ) ;
+                         defparam ix22081z52931.lut_mask = 16'h5aa0;
+                         defparam ix22081z52931.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix22081z52932 (.combout (inc_d_7_), .cout (nx22081z8), 
+                         .dataa (waitcount[7]), .datad (PWR), .cin (nx22081z9)
+                         ) ;
+                         defparam ix22081z52932.lut_mask = 16'h5aa0;
+                         defparam ix22081z52932.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix22081z52933 (.combout (inc_d_6_), .cout (nx22081z9), 
+                         .dataa (waitcount[6]), .datad (PWR), .cin (nx22081z10)
+                         ) ;
+                         defparam ix22081z52933.lut_mask = 16'h5aa0;
+                         defparam ix22081z52933.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix22081z52934 (.combout (inc_d_5_), .cout (nx22081z10)
+                         , .dataa (waitcount[5]), .datad (PWR), .cin (nx22081z11
+                         )) ;
+                         defparam ix22081z52934.lut_mask = 16'h5aa0;
+                         defparam ix22081z52934.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix22081z52935 (.combout (inc_d_4_), .cout (nx22081z11)
+                         , .dataa (waitcount[4]), .datad (PWR), .cin (nx22081z12
+                         )) ;
+                         defparam ix22081z52935.lut_mask = 16'h5aa0;
+                         defparam ix22081z52935.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix22081z52936 (.combout (inc_d_3_), .cout (nx22081z12)
+                         , .dataa (waitcount[3]), .datad (PWR), .cin (nx22081z13
+                         )) ;
+                         defparam ix22081z52936.lut_mask = 16'h5aa0;
+                         defparam ix22081z52936.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix22081z52937 (.combout (inc_d_2_), .cout (nx22081z13)
+                         , .dataa (waitcount[2]), .datad (PWR), .cin (nx22081z14
+                         )) ;
+                         defparam ix22081z52937.lut_mask = 16'h5aa0;
+                         defparam ix22081z52937.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix22081z52938 (.combout (inc_d_1_), .cout (nx22081z14)
+                         , .dataa (waitcount[1]), .datad (PWR), .cin (nx22081z15
+                         )) ;
+                         defparam ix22081z52938.lut_mask = 16'h5aa0;
+                         defparam ix22081z52938.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix22081z52939 (.cout (nx22081z15), .dataa (waitcount[0]
+                         ), .datad (PWR)) ;
+                         defparam ix22081z52939.lut_mask = 16'h00aa;
+    cycloneii_lcell_comb ix22081z52930 (.combout (inc_d_9_), .cout (nx22081z6), 
+                         .dataa (waitcount[9]), .datad (PWR), .cin (nx22081z7)
+                         ) ;
+                         defparam ix22081z52930.lut_mask = 16'h5aa0;
+                         defparam ix22081z52930.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix51271z52923 (.combout (inc_d_0_), .datad (
+                         waitcount[0])) ;
+                         defparam ix51271z52923.lut_mask = 16'h00ff;
+    cycloneii_lcell_comb ix39480z52926 (.combout (nx39480z4), .dataa (
+                         waitcount[11]), .datab (waitcount[10]), .datac (
+                         waitcount[9]), .datad (waitcount[8])) ;
+                         defparam ix39480z52926.lut_mask = 16'h0001;
+    cycloneii_lcell_comb ix39480z52925 (.combout (nx39480z3), .dataa (
+                         waitcount[15]), .datab (waitcount[14]), .datac (
+                         waitcount[13]), .datad (waitcount[12])) ;
+                         defparam ix39480z52925.lut_mask = 16'h0001;
+    cycloneii_lcell_comb ix39865z52923 (.combout (nx39865z1), .dataa (sdout_6_)
+                         , .datab (state), .datac (dsend), .datad (mdata_7_)) ;
+                         defparam ix39865z52923.lut_mask = 16'hba8a;
+    cycloneii_lcell_comb ix41859z52923 (.combout (nx41859z1), .dataa (sdout_4_)
+                         , .datab (state), .datac (dsend)) ;
+                         defparam ix41859z52923.lut_mask = 16'hbaba;
+    cycloneii_lcell_comb ix45847z52923 (.combout (nx45847z1), .dataa (sdout_0_)
+                         , .datab (state), .datac (dsend), .datad (mdata_0_)) ;
+                         defparam ix45847z52923.lut_mask = 16'hba8a;
+    cycloneii_lcell_comb ix39739z52923 (.combout (nx39739z1), .dataa (rst), .datab (
+                         i_mode[1]), .datac (mdata_7_), .datad (nx46385z2)) ;
+                         defparam ix39739z52923.lut_mask = 16'hcce0;
+    cycloneii_lcell_comb ix33757z52923 (.combout (nx33757z1), .dataa (mdata_0_)
+                         , .datab (nx46385z2), .datac (nx33757z2), .datad (
+                         nx33757z3)) ;
+                         defparam ix33757z52923.lut_mask = 16'hf0e2;
+    cycloneii_lcell_comb ix18433z52923 (.combout (nx18433z1), .dataa (state), .datab (
+                         dsend), .datac (ld_sdout)) ;
+                         defparam ix18433z52923.lut_mask = 16'h5454;
+    cycloneii_lcell_comb ix39480z52923 (.combout (nx39480z1), .dataa (rst), .datab (
+                         o_pixavail_dup_0), .datac (ack), .datad (nx39480z2)) ;
+                         defparam ix39480z52923.lut_mask = 16'h0054;
+    cycloneii_lcell_comb ix58116z52923 (.combout (nx58116z1), .dataa (
+                         o_pixavail_dup_0), .datab (rxrdy)) ;
+                         defparam ix58116z52923.lut_mask = 16'h4444;
+    cycloneii_lcell_comb ix21084z52923 (.combout (nx21084z1), .dataa (rst), .datab (
+                         o_pixavail_dup_0), .datac (ack)) ;
+                         defparam ix21084z52923.lut_mask = 16'hfefe;
+    cycloneii_lcell_comb ix38650z52923 (.combout (nx38650z1), .dataa (state), .datab (
+                         dsend)) ;
+                         defparam ix38650z52923.lut_mask = 16'h4444;
+    cycloneii_lcell_comb ix46385z52923 (.combout (nx46385z1), .dataa (rst), .datab (
+                         i_mode[1]), .datac (nx46385z2)) ;
+                         defparam ix46385z52923.lut_mask = 16'hf1f1;
+    cycloneii_lcell_comb ix21084z52924 (.combout (nx21084z2), .dataa (rst), .datab (
+                         nx39480z2)) ;
+                         defparam ix21084z52924.lut_mask = 16'heeee;
+    cycloneii_lcell_comb ix39480z52924 (.combout (nx39480z2), .dataa (nx39480z3)
+                         , .datab (nx39480z4), .datac (nx39480z5), .datad (
+                         nx39480z6)) ;
+                         defparam ix39480z52924.lut_mask = 16'h8000;
+    cycloneii_lcell_comb ix46385z52925 (.combout (nx46385z3), .dataa (
+                         o_pixavail_dup_0), .datab (ack)) ;
+                         defparam ix46385z52925.lut_mask = 16'heeee;
+    cycloneii_lcell_comb ix15671z52923 (.combout (rawrx), .dataa (rst), .datab (
+                         rxflex)) ;
+                         defparam ix15671z52923.lut_mask = 16'h4444;
+    cycloneii_lcell_comb ix33757z52925 (.combout (nx33757z3), .dataa (rst), .datab (
+                         i_mode[1])) ;
+                         defparam ix33757z52925.lut_mask = 16'h1111;
+    cycloneii_lcell_comb ix33757z52924 (.combout (nx33757z2), .dataa (i_mode[1])
+                         , .datab (o_pixavail_dup_0), .datac (ack)) ;
+                         defparam ix33757z52924.lut_mask = 16'ha8a8;
+    cycloneii_lcell_comb ix46385z52924 (.combout (nx46385z2), .dataa (rst), .datab (
+                         rxerr), .datac (nx46385z3), .datad (nx39480z2)) ;
+                         defparam ix46385z52924.lut_mask = 16'h5404;
+    cycloneii_lcell_comb ix39480z52928 (.combout (nx39480z6), .dataa (
+                         waitcount[3]), .datab (waitcount[2]), .datac (
+                         waitcount[1]), .datad (waitcount[0])) ;
+                         defparam ix39480z52928.lut_mask = 16'h0004;
+    cycloneii_lcell_comb ix39480z52927 (.combout (nx39480z5), .dataa (
+                         waitcount[7]), .datab (waitcount[6]), .datac (
+                         waitcount[5]), .datad (waitcount[4])) ;
+                         defparam ix39480z52927.lut_mask = 16'h0040;
+endmodule
+
+
+module UARTS ( CLK, RST, Din, LD, Rx, Baud, Dout, Tx, TxBusy, RxErr, RxRDY ) ;
+
+    input CLK ;
+    input RST ;
+    input [7:0]Din ;
+    input LD ;
+    input Rx ;
+    input Baud ;
+    output [7:0]Dout ;
+    output Tx ;
+    output TxBusy ;
+    output RxErr ;
+    output RxRDY ;
+
+    wire RxDivisor_4_;
+    wire [10:0]RxDiv;
+    wire [11:0]TxDiv;
+    wire TopTx, TopRx;
+    wire [3:0]TxBitCnt;
+    wire [3:0]RxBitCnt;
+    wire [5:0]RxFSM;
+    wire [1:0]TxFSM;
+    wire nx4608z2, nx4608z5, inc_d_0_, nx52268z1, inc_d_1_, nx60244z8, inc_d_2_, 
+         nx60244z7, inc_d_3_, nx60244z6, inc_d_4_, nx60244z5, inc_d_5_, 
+         nx60244z4, inc_d_6_, nx60244z3, inc_d_7_, nx60244z2, inc_d_8_, 
+         nx60244z1, inc_d_9_, nx17096z1, inc_d_10_, inc_d_0__dup_94, nx18093z11, 
+         inc_d_1__dup_96, nx18093z10, inc_d_2__dup_98, nx18093z9, 
+         inc_d_3__dup_100, nx18093z8, inc_d_4__dup_102, nx18093z7, 
+         inc_d_5__dup_104, nx18093z6, inc_d_6__dup_106, nx18093z5, 
+         inc_d_7__dup_108, nx18093z4, inc_d_8__dup_110, nx18093z3, 
+         inc_d_9__dup_112, nx18093z2, inc_d_10__dup_113, nx18093z1, inc_d_11_, 
+         PWR, nx51271z1, nx4608z3, nx35603z1, nx50920z2, nx13547z3, nx13547z1, 
+         nx14544z1, nx12550z1, nx34394z1, nx43465z1, nx32400z1, nx13547z2, 
+         nx11553z1, nx15376z1, nx4608z1, nx5605z1, nx13547z4, nx51271z3, 
+         nx4608z4, nx48926z2, nx48926z1, nx49923z1, nx50920z1, nx51917z1, 
+         nx51917z2, nx11364z2, nx11364z1, nx10367z1, nx9370z1, nx8373z1, 
+         nx8373z2, nx51271z4, nx32400z2, nx51271z5, nx51271z6, nx51271z7, 
+         nx51271z8, nx32400z4, nx32400z3, nx32400z5, nx32400z6, nx27627z2, 
+         nx27627z3, nx27627z4, NOT_Tx_Reg_7_, NOT_Din_7_, NOT_Tx_Reg_6_, 
+         NOT_Din_5_, NOT_Tx_Reg_5_, NOT_Tx_Reg_4_, NOT_Din_3_, NOT_Tx_Reg_3_, 
+         NOT_Tx_Reg_2_, nx27627z5, nx18332z1, nx27627z1, nx16538z2, NOT_Rx, 
+         NOT_Tx_Reg_8_, NOT_Tx_Reg_14n6ss1_8_, nx51271z2, nx16538z1;
+    wire [442:0] xmplr_dummy ;
+
+
+
+
+    assign Dout[6] = Dout[7] ;
+    assign Dout[5] = Dout[7] ;
+    assign Dout[4] = Dout[7] ;
+    assign Dout[3] = Dout[7] ;
+    assign Dout[2] = Dout[7] ;
+    assign Dout[1] = Dout[7] ;
+    assign Dout[0] = Dout[7] ;
+    assign TxBusy = Dout[7] ;
+    assign Dout[7] = 1'b0 ;
+    assign PWR = 1'b1 ;
+    assign NOT_Din_7_ = ~Din[7] ;
+    assign NOT_Din_5_ = ~Din[5] ;
+    assign NOT_Din_3_ = ~Din[3] ;
+    assign Tx = ~nx18332z1 ;
+    assign NOT_Rx = ~Rx ;
+    assign RxFSM[0] = ~nx51271z2 ;
+    cycloneii_lcell_ff reg_q_9__dup_1 (.regout (TxDiv[9]), .datain (
+                       inc_d_9__dup_112), .clk (CLK), .ena (PWR), .aclr (RST), .sclr (
+                       nx32400z1)) ;
+    cycloneii_lcell_ff reg_q_9_ (.regout (RxDiv[9]), .datain (inc_d_9_), .clk (
+                       CLK), .ena (PWR), .aclr (RST), .sclr (nx51271z1)) ;
+    cycloneii_lcell_ff reg_q_8__dup_2 (.regout (TxDiv[8]), .datain (
+                       inc_d_8__dup_110), .clk (CLK), .ena (PWR), .aclr (RST), .sclr (
+                       nx32400z1)) ;
+    cycloneii_lcell_ff reg_q_8_ (.regout (RxDiv[8]), .datain (inc_d_8_), .clk (
+                       CLK), .ena (PWR), .aclr (RST), .sclr (nx51271z1)) ;
+    cycloneii_lcell_ff reg_q_7__dup_3 (.regout (TxDiv[7]), .datain (
+                       inc_d_7__dup_108), .clk (CLK), .ena (PWR), .aclr (RST), .sclr (
+                       nx32400z1)) ;
+    cycloneii_lcell_ff reg_q_7_ (.regout (RxDiv[7]), .datain (inc_d_7_), .clk (
+                       CLK), .ena (PWR), .aclr (RST), .sclr (nx51271z1)) ;
+    cycloneii_lcell_ff reg_q_6__dup_4 (.regout (TxDiv[6]), .datain (
+                       inc_d_6__dup_106), .clk (CLK), .ena (PWR), .aclr (RST), .sclr (
+                       nx32400z1)) ;
+    cycloneii_lcell_ff reg_q_6_ (.regout (RxDiv[6]), .datain (inc_d_6_), .clk (
+                       CLK), .ena (PWR), .aclr (RST), .sclr (nx51271z1)) ;
+    cycloneii_lcell_ff reg_q_5__dup_5 (.regout (TxDiv[5]), .datain (
+                       inc_d_5__dup_104), .clk (CLK), .ena (PWR), .aclr (RST), .sclr (
+                       nx32400z1)) ;
+    cycloneii_lcell_ff reg_q_5_ (.regout (RxDiv[5]), .datain (inc_d_5_), .clk (
+                       CLK), .ena (PWR), .aclr (RST), .sclr (nx51271z1)) ;
+    cycloneii_lcell_ff reg_q_4__dup_6 (.regout (TxDiv[4]), .datain (
+                       inc_d_4__dup_102), .clk (CLK), .ena (PWR), .aclr (RST), .sclr (
+                       nx32400z1)) ;
+    cycloneii_lcell_ff reg_q_4_ (.regout (RxDiv[4]), .datain (inc_d_4_), .clk (
+                       CLK), .ena (PWR), .aclr (RST), .sclr (nx51271z1)) ;
+    cycloneii_lcell_ff reg_q_3__dup_7 (.regout (TxDiv[3]), .datain (
+                       inc_d_3__dup_100), .clk (CLK), .ena (PWR), .aclr (RST), .sclr (
+                       nx32400z1)) ;
+    cycloneii_lcell_ff reg_q_3_ (.regout (RxDiv[3]), .datain (inc_d_3_), .clk (
+                       CLK), .ena (PWR), .aclr (RST), .sclr (nx51271z1)) ;
+    cycloneii_lcell_ff reg_q_2__dup_8 (.regout (TxDiv[2]), .datain (
+                       inc_d_2__dup_98), .clk (CLK), .ena (PWR), .aclr (RST), .sclr (
+                       nx32400z1)) ;
+    cycloneii_lcell_ff reg_q_2_ (.regout (RxDiv[2]), .datain (inc_d_2_), .clk (
+                       CLK), .ena (PWR), .aclr (RST), .sclr (nx51271z1)) ;
+    cycloneii_lcell_ff reg_q_11_ (.regout (TxDiv[11]), .datain (inc_d_11_), .clk (
+                       CLK), .ena (PWR), .aclr (RST), .sclr (nx32400z1)) ;
+    cycloneii_lcell_ff reg_q_10__dup_0 (.regout (TxDiv[10]), .datain (
+                       inc_d_10__dup_113), .clk (CLK), .ena (PWR), .aclr (RST), 
+                       .sclr (nx32400z1)) ;
+    cycloneii_lcell_ff reg_q_10_ (.regout (RxDiv[10]), .datain (inc_d_10_), .clk (
+                       CLK), .ena (PWR), .aclr (RST), .sclr (nx51271z1)) ;
+    cycloneii_lcell_ff reg_q_1__dup_9 (.regout (TxDiv[1]), .datain (
+                       inc_d_1__dup_96), .clk (CLK), .ena (PWR), .aclr (RST), .sclr (
+                       nx32400z1)) ;
+    cycloneii_lcell_ff reg_q_1_ (.regout (RxDiv[1]), .datain (inc_d_1_), .clk (
+                       CLK), .ena (PWR), .aclr (RST), .sclr (nx51271z1)) ;
+    cycloneii_lcell_ff reg_q_0__dup_10 (.regout (TxDiv[0]), .datain (
+                       inc_d_0__dup_94), .clk (CLK), .ena (PWR), .aclr (RST), .sclr (
+                       nx32400z1)) ;
+    cycloneii_lcell_ff reg_q_0_ (.regout (RxDiv[0]), .datain (inc_d_0_), .clk (
+                       CLK), .ena (PWR), .aclr (RST), .sclr (nx51271z1)) ;
+    cycloneii_lcell_ff reg_Tx_Reg_8_ (.regout (NOT_Tx_Reg_8_), .datain (
+                       NOT_Tx_Reg_14n6ss1_8_), .clk (CLK), .ena (nx35603z1), .aclr (
+                       RST)) ;
+    cycloneii_lcell_ff reg_Tx_Reg_7_ (.regout (NOT_Tx_Reg_7_), .datain (
+                       NOT_Din_7_), .sdata (NOT_Tx_Reg_8_), .clk (CLK), .ena (
+                       nx35603z1), .aclr (RST), .sload (TxFSM[1])) ;
+    cycloneii_lcell_ff reg_Tx_Reg_6_ (.regout (NOT_Tx_Reg_6_), .datain (
+                       NOT_Din_5_), .sdata (NOT_Tx_Reg_7_), .clk (CLK), .ena (
+                       nx35603z1), .aclr (RST), .sload (TxFSM[1])) ;
+    cycloneii_lcell_ff reg_Tx_Reg_5_ (.regout (NOT_Tx_Reg_5_), .datain (
+                       NOT_Din_5_), .sdata (NOT_Tx_Reg_6_), .clk (CLK), .ena (
+                       nx35603z1), .aclr (RST), .sload (TxFSM[1])) ;
+    cycloneii_lcell_ff reg_Tx_Reg_4_ (.regout (NOT_Tx_Reg_4_), .datain (
+                       NOT_Din_3_), .sdata (NOT_Tx_Reg_5_), .clk (CLK), .ena (
+                       nx35603z1), .aclr (RST), .sload (TxFSM[1])) ;
+    cycloneii_lcell_ff reg_Tx_Reg_3_ (.regout (NOT_Tx_Reg_3_), .datain (
+                       NOT_Din_3_), .sdata (NOT_Tx_Reg_4_), .clk (CLK), .ena (
+                       nx35603z1), .aclr (RST), .sload (TxFSM[1])) ;
+    cycloneii_lcell_ff reg_Tx_Reg_2_ (.regout (NOT_Tx_Reg_2_), .datain (
+                       NOT_Din_3_), .sdata (NOT_Tx_Reg_3_), .clk (CLK), .ena (
+                       nx35603z1), .aclr (RST), .sload (TxFSM[1])) ;
+    cycloneii_lcell_ff reg_Tx_Reg_1_ (.regout (nx27627z5), .datain (NOT_Din_3_)
+                       , .sdata (NOT_Tx_Reg_2_), .clk (CLK), .ena (nx35603z1), .aclr (
+                       RST), .sload (TxFSM[1])) ;
+    cycloneii_lcell_ff reg_Tx_Reg_0_ (.regout (nx18332z1), .datain (nx27627z1), 
+                       .clk (CLK), .aclr (RST)) ;
+    cycloneii_lcell_ff reg_TxFSM_1_ (.regout (TxFSM[1]), .datain (nx5605z1), .clk (
+                       CLK), .aclr (RST)) ;
+    cycloneii_lcell_ff reg_TxFSM_0_ (.regout (TxFSM[0]), .datain (nx4608z1), .clk (
+                       CLK), .aclr (RST)) ;
+    cycloneii_lcell_ff reg_TopTx (.regout (TopTx), .datain (nx32400z1), .clk (
+                       CLK), .aclr (RST)) ;
+    cycloneii_lcell_ff reg_TopRx (.regout (TopRx), .datain (nx34394z1), .clk (
+                       CLK), .aclr (RST)) ;
+    cycloneii_lcell_ff reg_Rx_r (.regout (nx16538z2), .datain (NOT_Rx), .clk (
+                       CLK), .aclr (RST)) ;
+    cycloneii_lcell_ff reg_RxRDYi (.regout (RxRDY), .datain (nx43465z1), .clk (
+                       CLK), .aclr (RST)) ;
+    cycloneii_lcell_ff reg_RxFSM_5_ (.regout (RxFSM[5]), .datain (nx11553z1), .clk (
+                       CLK), .ena (nx13547z3), .aclr (RST)) ;
+    cycloneii_lcell_ff reg_RxFSM_4_ (.regout (RxFSM[4]), .datain (nx12550z1), .clk (
+                       CLK), .ena (nx13547z3), .aclr (RST)) ;
+    cycloneii_lcell_ff reg_RxFSM_3_ (.regout (RxFSM[3]), .datain (nx13547z1), .clk (
+                       CLK), .ena (nx13547z3), .aclr (RST)) ;
+    cycloneii_lcell_ff reg_RxFSM_2_ (.regout (RxFSM[2]), .datain (nx14544z1), .clk (
+                       CLK), .ena (nx13547z3), .aclr (RST)) ;
+    cycloneii_lcell_ff reg_RxFSM_1_ (.regout (RxFSM[1]), .datain (RxFSM[0]), .clk (
+                       CLK), .ena (nx13547z3), .aclr (RST)) ;
+    cycloneii_lcell_ff reg_RxFSM_0_ (.regout (nx51271z2), .datain (nx16538z1), .clk (
+                       CLK), .ena (nx13547z3), .aclr (RST)) ;
+    cycloneii_lcell_ff reg_RxErr (.regout (RxErr), .datain (nx15376z1), .clk (
+                       CLK), .aclr (RST)) ;
+    cycloneii_lcell_ff reg_RxDivisor_4_ (.regout (RxDivisor_4_), .datain (PWR), 
+                       .clk (CLK), .aclr (RST)) ;
+    cycloneii_lcell_ff modgen_counter_TxBitCnt_reg_q_3_ (.regout (TxBitCnt[3]), 
+                       .datain (nx51917z1), .clk (CLK), .ena (nx48926z2), .aclr (
+                       RST)) ;
+    cycloneii_lcell_ff modgen_counter_TxBitCnt_reg_q_2_ (.regout (TxBitCnt[2]), 
+                       .datain (nx50920z1), .clk (CLK), .ena (nx48926z2), .aclr (
+                       RST)) ;
+    cycloneii_lcell_ff modgen_counter_TxBitCnt_reg_q_1_ (.regout (TxBitCnt[1]), 
+                       .datain (nx49923z1), .clk (CLK), .ena (nx48926z2), .aclr (
+                       RST)) ;
+    cycloneii_lcell_ff modgen_counter_TxBitCnt_reg_q_0_ (.regout (TxBitCnt[0]), 
+                       .datain (nx48926z1), .clk (CLK), .ena (nx48926z2), .aclr (
+                       RST)) ;
+    cycloneii_lcell_ff modgen_counter_RxBitCnt_reg_q_3_ (.regout (RxBitCnt[3]), 
+                       .datain (nx8373z1), .clk (CLK), .ena (nx11364z2), .aclr (
+                       RST)) ;
+    cycloneii_lcell_ff modgen_counter_RxBitCnt_reg_q_2_ (.regout (RxBitCnt[2]), 
+                       .datain (nx9370z1), .clk (CLK), .ena (nx11364z2), .aclr (
+                       RST)) ;
+    cycloneii_lcell_ff modgen_counter_RxBitCnt_reg_q_1_ (.regout (RxBitCnt[1]), 
+                       .datain (nx10367z1), .clk (CLK), .ena (nx11364z2), .aclr (
+                       RST)) ;
+    cycloneii_lcell_ff modgen_counter_RxBitCnt_reg_q_0_ (.regout (RxBitCnt[0]), 
+                       .datain (nx11364z1), .clk (CLK), .ena (nx11364z2), .aclr (
+                       RST)) ;
+    cycloneii_lcell_comb ix18093z52923 (.combout (inc_d_11_), .dataa (TxDiv[11])
+                         , .datad (PWR), .cin (nx18093z1)) ;
+                         defparam ix18093z52923.lut_mask = 16'h5a5a;
+                         defparam ix18093z52923.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix18093z52926 (.combout (inc_d_9__dup_112), .cout (
+                         nx18093z2), .dataa (TxDiv[9]), .datad (PWR), .cin (
+                         nx18093z3)) ;
+                         defparam ix18093z52926.lut_mask = 16'h5aa0;
+                         defparam ix18093z52926.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix18093z52927 (.combout (inc_d_8__dup_110), .cout (
+                         nx18093z3), .dataa (TxDiv[8]), .datad (PWR), .cin (
+                         nx18093z4)) ;
+                         defparam ix18093z52927.lut_mask = 16'h5aa0;
+                         defparam ix18093z52927.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix18093z52928 (.combout (inc_d_7__dup_108), .cout (
+                         nx18093z4), .dataa (TxDiv[7]), .datad (PWR), .cin (
+                         nx18093z5)) ;
+                         defparam ix18093z52928.lut_mask = 16'h5aa0;
+                         defparam ix18093z52928.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix60244z52930 (.combout (inc_d_2_), .cout (nx60244z7), 
+                         .dataa (RxDiv[2]), .datad (PWR), .cin (nx60244z8)) ;
+                         defparam ix60244z52930.lut_mask = 16'h5aa0;
+                         defparam ix60244z52930.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix18093z52929 (.combout (inc_d_6__dup_106), .cout (
+                         nx18093z5), .dataa (TxDiv[6]), .datad (PWR), .cin (
+                         nx18093z6)) ;
+                         defparam ix18093z52929.lut_mask = 16'h5aa0;
+                         defparam ix18093z52929.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix18093z52930 (.combout (inc_d_5__dup_104), .cout (
+                         nx18093z6), .dataa (TxDiv[5]), .datad (PWR), .cin (
+                         nx18093z7)) ;
+                         defparam ix18093z52930.lut_mask = 16'h5aa0;
+                         defparam ix18093z52930.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix18093z52931 (.combout (inc_d_4__dup_102), .cout (
+                         nx18093z7), .dataa (TxDiv[4]), .datad (PWR), .cin (
+                         nx18093z8)) ;
+                         defparam ix18093z52931.lut_mask = 16'h5aa0;
+                         defparam ix18093z52931.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix18093z52932 (.combout (inc_d_3__dup_100), .cout (
+                         nx18093z8), .dataa (TxDiv[3]), .datad (PWR), .cin (
+                         nx18093z9)) ;
+                         defparam ix18093z52932.lut_mask = 16'h5aa0;
+                         defparam ix18093z52932.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix18093z52933 (.combout (inc_d_2__dup_98), .cout (
+                         nx18093z9), .dataa (TxDiv[2]), .datad (PWR), .cin (
+                         nx18093z10)) ;
+                         defparam ix18093z52933.lut_mask = 16'h5aa0;
+                         defparam ix18093z52933.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix18093z52934 (.combout (inc_d_1__dup_96), .cout (
+                         nx18093z10), .dataa (TxDiv[1]), .datad (PWR), .cin (
+                         nx18093z11)) ;
+                         defparam ix18093z52934.lut_mask = 16'h5aa0;
+                         defparam ix18093z52934.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix18093z52935 (.cout (nx18093z11), .dataa (TxDiv[0]), .datad (
+                         PWR)) ;
+                         defparam ix18093z52935.lut_mask = 16'h00aa;
+    cycloneii_lcell_comb ix17415z52923 (.combout (inc_d_0__dup_94), .datad (
+                         TxDiv[0])) ;
+                         defparam ix17415z52923.lut_mask = 16'h00ff;
+    cycloneii_lcell_comb ix17096z52923 (.combout (inc_d_10_), .dataa (RxDiv[10])
+                         , .datad (PWR), .cin (nx17096z1)) ;
+                         defparam ix17096z52923.lut_mask = 16'h5a5a;
+                         defparam ix17096z52923.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix60244z52923 (.combout (inc_d_9_), .cout (nx17096z1), 
+                         .dataa (RxDiv[9]), .datad (PWR), .cin (nx60244z1)) ;
+                         defparam ix60244z52923.lut_mask = 16'h5aa0;
+                         defparam ix60244z52923.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix60244z52924 (.combout (inc_d_8_), .cout (nx60244z1), 
+                         .dataa (RxDiv[8]), .datad (PWR), .cin (nx60244z2)) ;
+                         defparam ix60244z52924.lut_mask = 16'h5aa0;
+                         defparam ix60244z52924.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix60244z52926 (.combout (inc_d_6_), .cout (nx60244z3), 
+                         .dataa (RxDiv[6]), .datad (PWR), .cin (nx60244z4)) ;
+                         defparam ix60244z52926.lut_mask = 16'h5aa0;
+                         defparam ix60244z52926.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix60244z52927 (.combout (inc_d_5_), .cout (nx60244z4), 
+                         .dataa (RxDiv[5]), .datad (PWR), .cin (nx60244z5)) ;
+                         defparam ix60244z52927.lut_mask = 16'h5aa0;
+                         defparam ix60244z52927.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix18093z52925 (.combout (inc_d_10__dup_113), .cout (
+                         nx18093z1), .dataa (TxDiv[10]), .datad (PWR), .cin (
+                         nx18093z2)) ;
+                         defparam ix18093z52925.lut_mask = 16'h5aa0;
+                         defparam ix18093z52925.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix52268z52923 (.combout (inc_d_1_), .cout (nx60244z8), 
+                         .dataa (RxDiv[1]), .datad (PWR), .cin (nx52268z1)) ;
+                         defparam ix52268z52923.lut_mask = 16'h5aa0;
+                         defparam ix52268z52923.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix60244z52925 (.combout (inc_d_7_), .cout (nx60244z2), 
+                         .dataa (RxDiv[7]), .datad (PWR), .cin (nx60244z3)) ;
+                         defparam ix60244z52925.lut_mask = 16'h5aa0;
+                         defparam ix60244z52925.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix52268z52924 (.cout (nx52268z1), .dataa (RxDiv[0]), .datad (
+                         PWR)) ;
+                         defparam ix52268z52924.lut_mask = 16'h00aa;
+    cycloneii_lcell_comb ix60244z52928 (.combout (inc_d_4_), .cout (nx60244z5), 
+                         .dataa (RxDiv[4]), .datad (PWR), .cin (nx60244z6)) ;
+                         defparam ix60244z52928.lut_mask = 16'h5aa0;
+                         defparam ix60244z52928.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix60244z52929 (.combout (inc_d_3_), .cout (nx60244z6), 
+                         .dataa (RxDiv[3]), .datad (PWR), .cin (nx60244z7)) ;
+                         defparam ix60244z52929.lut_mask = 16'h5aa0;
+                         defparam ix60244z52929.sum_lutc_input = "cin";
+    cycloneii_lcell_comb ix51271z52923 (.combout (inc_d_0_), .datad (RxDiv[0])
+                         ) ;
+                         defparam ix51271z52923.lut_mask = 16'h00ff;
+    cycloneii_lcell_comb ix4608z52924 (.combout (nx4608z2), .dataa (TopTx), .datab (
+                         nx4608z3), .datac (TxFSM[1]), .datad (nx4608z5)) ;
+                         defparam ix4608z52924.lut_mask = 16'h5fc0;
+    cycloneii_lcell_comb ix4608z52927 (.combout (nx4608z5), .dataa (TopTx), .datab (
+                         TxFSM[1]), .datac (TxFSM[0]), .datad (LD)) ;
+                         defparam ix4608z52927.lut_mask = 16'hd0d3;
+    cycloneii_lcell_comb ix27627z52926 (.combout (nx27627z4), .dataa (nx27627z5)
+                         , .datab (TopTx), .datac (TxFSM[1]), .datad (TxFSM[0])
+                         ) ;
+                         defparam ix27627z52926.lut_mask = 16'h004f;
+    cycloneii_lcell_comb ix27627z52925 (.combout (nx27627z3), .dataa (TopTx), .datab (
+                         TxFSM[1]), .datac (TxFSM[0])) ;
+                         defparam ix27627z52925.lut_mask = 16'hc4c4;
+    cycloneii_lcell_comb ix27627z52924 (.combout (nx27627z2), .dataa (LD), .datab (
+                         TopTx), .datac (TxFSM[1]), .datad (TxFSM[0])) ;
+                         defparam ix27627z52924.lut_mask = 16'h0305;
+    cycloneii_lcell_comb ix32400z52928 (.combout (nx32400z6), .dataa (
+                         RxDivisor_4_), .datab (TxDiv[1]), .datac (TxDiv[0])) ;
+                         defparam ix32400z52928.lut_mask = 16'hdede;
+    cycloneii_lcell_comb ix32400z52927 (.combout (nx32400z5), .dataa (
+                         RxDivisor_4_), .datab (TxDiv[4]), .datac (TxDiv[3])) ;
+                         defparam ix32400z52927.lut_mask = 16'hf6f6;
+    cycloneii_lcell_comb ix32400z52925 (.combout (nx32400z3), .dataa (
+                         RxDivisor_4_), .datab (TxDiv[7]), .datac (TxDiv[5]), .datad (
+                         nx32400z4)) ;
+                         defparam ix32400z52925.lut_mask = 16'hff7e;
+    cycloneii_lcell_comb ix32400z52926 (.combout (nx32400z4), .dataa (
+                         RxDivisor_4_), .datab (TxDiv[9]), .datac (TxDiv[8])) ;
+                         defparam ix32400z52926.lut_mask = 16'hdede;
+    cycloneii_lcell_comb ix51271z52930 (.combout (nx51271z8), .dataa (RxDiv[2])
+                         , .datab (RxDiv[0])) ;
+                         defparam ix51271z52930.lut_mask = 16'heeee;
+    cycloneii_lcell_comb ix51271z52929 (.combout (nx51271z7), .dataa (
+                         RxDivisor_4_), .datab (RxDiv[4]), .datac (RxDiv[3])) ;
+                         defparam ix51271z52929.lut_mask = 16'h7e7e;
+    cycloneii_lcell_comb ix51271z52928 (.combout (nx51271z6), .dataa (
+                         RxDivisor_4_), .datab (RxDiv[7]), .datac (RxDiv[6])) ;
+                         defparam ix51271z52928.lut_mask = 16'h7e7e;
+    cycloneii_lcell_comb ix51271z52927 (.combout (nx51271z5), .dataa (RxDiv[10])
+                         , .datab (RxDiv[8])) ;
+                         defparam ix51271z52927.lut_mask = 16'heeee;
+    cycloneii_lcell_comb ix32400z52924 (.combout (nx32400z2), .dataa (TxDiv[11])
+                         , .datab (TxDiv[10]), .datac (TxDiv[6]), .datad (
+                         TxDiv[2])) ;
+                         defparam ix32400z52924.lut_mask = 16'h0001;
+    cycloneii_lcell_comb ix51271z52926 (.combout (nx51271z4), .dataa (nx51271z5)
+                         , .datab (nx51271z6), .datac (nx51271z7), .datad (
+                         nx51271z8)) ;
+                         defparam ix51271z52926.lut_mask = 16'hfffe;
+    cycloneii_lcell_comb ix8373z52924 (.combout (nx8373z2), .dataa (RxBitCnt[1])
+                         , .datab (RxBitCnt[0])) ;
+                         defparam ix8373z52924.lut_mask = 16'h8888;
+    cycloneii_lcell_comb ix8373z52923 (.combout (nx8373z1), .dataa (RxBitCnt[3])
+                         , .datab (RxBitCnt[2]), .datac (nx51271z2), .datad (
+                         nx8373z2)) ;
+                         defparam ix8373z52923.lut_mask = 16'h60a0;
+    cycloneii_lcell_comb ix9370z52923 (.combout (nx9370z1), .dataa (RxBitCnt[2])
+                         , .datab (RxBitCnt[1]), .datac (RxBitCnt[0]), .datad (
+                         nx51271z2)) ;
+                         defparam ix9370z52923.lut_mask = 16'h6a00;
+    cycloneii_lcell_comb ix10367z52923 (.combout (nx10367z1), .dataa (
+                         RxBitCnt[1]), .datab (RxBitCnt[0]), .datac (nx51271z2)
+                         ) ;
+                         defparam ix10367z52923.lut_mask = 16'h6060;
+    cycloneii_lcell_comb ix11364z52923 (.combout (nx11364z1), .dataa (
+                         RxBitCnt[0]), .datab (nx51271z2)) ;
+                         defparam ix11364z52923.lut_mask = 16'h4444;
+    cycloneii_lcell_comb ix11364z52924 (.combout (nx11364z2), .dataa (TopRx), .datab (
+                         RxFSM[3]), .datac (nx51271z2)) ;
+                         defparam ix11364z52924.lut_mask = 16'h8b8b;
+    cycloneii_lcell_comb ix51917z52924 (.combout (nx51917z2), .dataa (
+                         TxBitCnt[1]), .datab (TxBitCnt[0])) ;
+                         defparam ix51917z52924.lut_mask = 16'heeee;
+    cycloneii_lcell_comb ix51917z52923 (.combout (nx51917z1), .dataa (
+                         TxBitCnt[3]), .datab (TxBitCnt[2]), .datac (nx50920z2)
+                         , .datad (nx51917z2)) ;
+                         defparam ix51917z52923.lut_mask = 16'hfaf9;
+    cycloneii_lcell_comb ix50920z52923 (.combout (nx50920z1), .dataa (
+                         TxBitCnt[2]), .datab (TxBitCnt[1]), .datac (TxBitCnt[0]
+                         ), .datad (nx50920z2)) ;
+                         defparam ix50920z52923.lut_mask = 16'h00a9;
+    cycloneii_lcell_comb ix49923z52923 (.combout (nx49923z1), .dataa (TopTx), .datab (
+                         TxBitCnt[1]), .datac (TxBitCnt[0]), .datad (TxFSM[1])
+                         ) ;
+                         defparam ix49923z52923.lut_mask = 16'hc341;
+    cycloneii_lcell_comb ix48926z52923 (.combout (nx48926z1), .dataa (TopTx), .datab (
+                         TxBitCnt[0]), .datac (TxFSM[1])) ;
+                         defparam ix48926z52923.lut_mask = 16'h3b3b;
+    cycloneii_lcell_comb ix48926z52924 (.combout (nx48926z2), .dataa (TopTx), .datab (
+                         TxFSM[1]), .datac (TxFSM[0])) ;
+                         defparam ix48926z52924.lut_mask = 16'h2828;
+    cycloneii_lcell_comb ix4608z52926 (.combout (nx4608z4), .dataa (TxBitCnt[3])
+                         , .datab (TxBitCnt[2])) ;
+                         defparam ix4608z52926.lut_mask = 16'h1111;
+    cycloneii_lcell_comb ix51271z52925 (.combout (nx51271z3), .dataa (RxDiv[9])
+                         , .datab (RxDiv[5])) ;
+                         defparam ix51271z52925.lut_mask = 16'h1111;
+    cycloneii_lcell_comb ix13547z52926 (.combout (nx13547z4), .dataa (Rx), .datab (
+                         TopRx), .datac (RxFSM[5]), .datad (nx51271z2)) ;
+                         defparam ix13547z52926.lut_mask = 16'h5350;
+    cycloneii_lcell_comb ix5605z52923 (.combout (nx5605z1), .dataa (TxFSM[1]), .datab (
+                         TxFSM[0]), .datac (nx4608z2)) ;
+                         defparam ix5605z52923.lut_mask = 16'ha6a6;
+    cycloneii_lcell_comb ix4608z52923 (.combout (nx4608z1), .dataa (TxFSM[0]), .datab (
+                         nx4608z2)) ;
+                         defparam ix4608z52923.lut_mask = 16'h9999;
+    cycloneii_lcell_comb ix27627z52923 (.combout (nx27627z1), .dataa (nx18332z1)
+                         , .datab (nx27627z2), .datac (nx27627z3), .datad (
+                         nx27627z4)) ;
+                         defparam ix27627z52923.lut_mask = 16'h88ab;
+    cycloneii_lcell_comb ix15376z52923 (.combout (nx15376z1), .dataa (RxErr), .datab (
+                         RxRDY), .datac (RxFSM[5])) ;
+                         defparam ix15376z52923.lut_mask = 16'hf2f2;
+    cycloneii_lcell_comb ix11553z52923 (.combout (nx11553z1), .dataa (nx16538z2)
+                         , .datab (RxFSM[4]), .datac (RxFSM[1])) ;
+                         defparam ix11553z52923.lut_mask = 16'hd8d8;
+    cycloneii_lcell_comb ix13547z52924 (.combout (nx13547z2), .dataa (
+                         RxBitCnt[3]), .datab (RxBitCnt[2]), .datac (RxBitCnt[1]
+                         ), .datad (RxBitCnt[0])) ;
+                         defparam ix13547z52924.lut_mask = 16'h0002;
+    cycloneii_lcell_comb ix32400z52923 (.combout (nx32400z1), .dataa (nx32400z2)
+                         , .datab (nx32400z3), .datac (nx32400z5), .datad (
+                         nx32400z6)) ;
+                         defparam ix32400z52923.lut_mask = 16'h0002;
+    cycloneii_lcell_comb ix43465z52923 (.combout (nx43465z1), .dataa (TopRx), .datab (
+                         nx16538z2), .datac (RxFSM[4])) ;
+                         defparam ix43465z52923.lut_mask = 16'h2020;
+    cycloneii_lcell_comb ix34394z52923 (.combout (nx34394z1), .dataa (RxDiv[1])
+                         , .datab (nx51271z2), .datac (nx51271z3), .datad (
+                         nx51271z4)) ;
+                         defparam ix34394z52923.lut_mask = 16'h0040;
+    cycloneii_lcell_comb ix12550z52923 (.combout (nx12550z1), .dataa (RxFSM[2])
+                         , .datab (nx13547z2)) ;
+                         defparam ix12550z52923.lut_mask = 16'h8888;
+    cycloneii_lcell_comb ix16538z52923 (.combout (nx16538z1), .dataa (nx16538z2)
+                         , .datab (RxFSM[5]), .datac (RxFSM[4])) ;
+                         defparam ix16538z52923.lut_mask = 16'h2323;
+    cycloneii_lcell_comb ix14544z52923 (.combout (nx14544z1), .dataa (nx16538z2)
+                         , .datab (RxFSM[3]), .datac (RxFSM[1])) ;
+                         defparam ix14544z52923.lut_mask = 16'hecec;
+    cycloneii_lcell_comb ix13547z52923 (.combout (nx13547z1), .dataa (RxFSM[2])
+                         , .datab (nx13547z2)) ;
+                         defparam ix13547z52923.lut_mask = 16'h2222;
+    cycloneii_lcell_comb ix13547z52925 (.combout (nx13547z3), .dataa (nx16538z2)
+                         , .datab (nx51271z2), .datac (nx13547z4)) ;
+                         defparam ix13547z52925.lut_mask = 16'h0e0e;
+    cycloneii_lcell_comb ix50920z52924 (.combout (nx50920z2), .dataa (TopTx), .datab (
+                         TxFSM[1])) ;
+                         defparam ix50920z52924.lut_mask = 16'h2222;
+    cycloneii_lcell_comb ix35603z52924 (.combout (nx35603z1), .dataa (LD), .datab (
+                         TopTx), .datac (TxFSM[1]), .datad (TxFSM[0])) ;
+                         defparam ix35603z52924.lut_mask = 16'h00ca;
+    cycloneii_lcell_comb ix4608z52925 (.combout (nx4608z3), .dataa (TopTx), .datab (
+                         TxBitCnt[1]), .datac (TxBitCnt[0]), .datad (nx4608z4)
+                         ) ;
+                         defparam ix4608z52925.lut_mask = 16'hdfff;
+    cycloneii_lcell_comb ix35603z52923 (.combout (NOT_Tx_Reg_14n6ss1_8_), .dataa (
+                         Din[7]), .datab (TxFSM[1])) ;
+                         defparam ix35603z52923.lut_mask = 16'h1111;
+    cycloneii_lcell_comb ix51271z52924 (.combout (nx51271z1), .dataa (RxDiv[1])
+                         , .datab (nx51271z2), .datac (nx51271z3), .datad (
+                         nx51271z4)) ;
+                         defparam ix51271z52924.lut_mask = 16'h3373;
+endmodule
+

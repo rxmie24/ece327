@@ -1,0 +1,26 @@
+<interfaceDefinition version='1.2' language='vhdl' kind='component' name='top_kirsch'>
+  <useClause path='work.kirsch_synth_pkg.all' />
+  <useClause path='ieee.NUMERIC_STD.all' />
+  <useClause path='ieee.std_logic_1164.all' />
+    <portList>
+
+      <port name='nrst' direction='in' type='STD_LOGIC' kind='' />
+      <port name='clk' direction='in' type='STD_LOGIC' kind='' />
+      <port name='rxflex' direction='in' type='STD_LOGIC' kind='' />
+      <port name='txflex' direction='out' type='STD_LOGIC' kind='' />
+      <port name='o_sevenseg' direction='out' type='std_logic_vector (15 downto 0)' kind='array' library='work' package='top_kirsch' packedDimension='(15 downto 0)' />
+      <port name='o_mode' direction='out' type='std_logic_vector (1 downto 0)' kind='array' library='work' package='top_kirsch' packedDimension='(1 downto 0)' />
+      <port name='o_nrst' direction='out' type='STD_LOGIC' kind='' />
+      <port name='debug_key' direction='in' type='std_logic_vector (3 downto 1)' kind='array' library='work' package='top_kirsch' packedDimension='(3 downto 1)' />
+      <port name='debug_switch' direction='in' type='std_logic_vector (17 downto 0)' kind='array' library='work' package='top_kirsch' packedDimension='(17 downto 0)' />
+      <port name='debug_led_red' direction='out' type='std_logic_vector (16 downto 0)' kind='array' library='work' package='top_kirsch' packedDimension='(16 downto 0)' />
+      <port name='debug_led_grn' direction='out' type='std_logic_vector (5 downto 0)' kind='array' library='work' package='top_kirsch' packedDimension='(5 downto 0)' />
+      <port name='debug_sevenseg_0' direction='out' type='std_logic_vector (7 downto 0)' kind='array' library='work' package='top_kirsch' packedDimension='(7 downto 0)' />
+      <port name='debug_sevenseg_1' direction='out' type='std_logic_vector (7 downto 0)' kind='array' library='work' package='top_kirsch' packedDimension='(7 downto 0)' />
+      <port name='debug_sevenseg_2' direction='out' type='std_logic_vector (7 downto 0)' kind='array' library='work' package='top_kirsch' packedDimension='(7 downto 0)' />
+      <port name='debug_sevenseg_3' direction='out' type='std_logic_vector (7 downto 0)' kind='array' library='work' package='top_kirsch' packedDimension='(7 downto 0)' />
+      <port name='debug_sevenseg_4' direction='out' type='std_logic_vector (7 downto 0)' kind='array' library='work' package='top_kirsch' packedDimension='(7 downto 0)' />
+      <port name='debug_sevenseg_5' direction='out' type='std_logic_vector (7 downto 0)' kind='array' library='work' package='top_kirsch' packedDimension='(7 downto 0)' />
+
+    </portList>
+</interfaceDefinition>

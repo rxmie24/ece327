@@ -1,0 +1,108 @@
+EDA Netlist Writer report for top_kirsch
+Wed Mar 23 15:44:19 2016
+Quartus II Version 10.1 Build 153 11/29/2010 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. EDA Netlist Writer Summary
+  3. Simulation Settings
+  4. Simulation Generated Files
+  5. EDA Netlist Writer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------+
+; EDA Netlist Writer Summary                                        ;
++---------------------------+---------------------------------------+
+; EDA Netlist Writer Status ; Successful - Wed Mar 23 15:44:19 2016 ;
+; Revision Name             ; top_kirsch                            ;
+; Top-level Entity Name     ; top_kirsch                            ;
+; Family                    ; Cyclone II                            ;
+; Simulation Files Creation ; Successful                            ;
++---------------------------+---------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Simulation Settings                                                                                                    ;
++---------------------------------------------------------------------------------------------------+--------------------+
+; Option                                                                                            ; Setting            ;
++---------------------------------------------------------------------------------------------------+--------------------+
+; Tool Name                                                                                         ; ModelSim (Verilog) ;
+; Generate netlist for functional simulation only                                                   ; Off                ;
+; Time scale                                                                                        ; 1 ps               ;
+; Truncate long hierarchy paths                                                                     ; Off                ;
+; Map illegal HDL characters                                                                        ; Off                ;
+; Flatten buses into individual nodes                                                               ; Off                ;
+; Maintain hierarchy                                                                                ; Off                ;
+; Bring out device-wide set/reset signals as ports                                                  ; Off                ;
+; Enable glitch filtering                                                                           ; Off                ;
+; Do not write top level VHDL entity                                                                ; Off                ;
+; Disable detection of setup and hold time violations in the input registers of bi-directional pins ; Off                ;
+; Architecture name in VHDL output netlist                                                          ; structure          ;
+; Generate third-party EDA tool command script for RTL functional simulation                        ; Off                ;
+; Generate third-party EDA tool command script for gate-level simulation                            ; Off                ;
++---------------------------------------------------------------------------------------------------+--------------------+
+
+
++---------------------------------------------------------------------------------------------+
+; Simulation Generated Files                                                                  ;
++---------------------------------------------------------------------------------------------+
+; Generated Files                                                                             ;
++---------------------------------------------------------------------------------------------+
+; /home/kkgajjal/ece327/public_html/cur/proj/proj/uw_tmp/simulation/modelsim/top_kirsch.vo    ;
+; /home/kkgajjal/ece327/public_html/cur/proj/proj/uw_tmp/simulation/modelsim/top_kirsch_v.sdo ;
++---------------------------------------------------------------------------------------------+
+
+
++-----------------------------+
+; EDA Netlist Writer Messages ;
++-----------------------------+
+Info: *******************************************************************
+Info: Running Quartus II EDA Netlist Writer
+    Info: Version 10.1 Build 153 11/29/2010 SJ Full Version
+    Info: Copyright (C) 1991-2010 Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and its AMPP partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, Altera MegaCore Function License 
+    Info: Agreement, or other applicable license agreement, including, 
+    Info: without limitation, that your use is for the sole purpose of 
+    Info: programming logic devices manufactured by Altera and sold by 
+    Info: Altera or its authorized distributors.  Please refer to the 
+    Info: applicable agreement for further details.
+    Info: Processing started: Wed Mar 23 15:44:19 2016
+Info: Command: quartus_eda top_kirsch --simulation=on --tool=modelsim --format=verilog
+Info: Generated simulation netlist will be non-hierarchical because the design has SignalTap II partitions, termination control logic and/or a design partition that contains bidirectional ports
+Info: Generated files "top_kirsch.vo" and "top_kirsch_v.sdo" in directory "/home/kkgajjal/ece327/public_html/cur/proj/proj/uw_tmp/simulation/modelsim/" for EDA simulation tool
+Info: Quartus II EDA Netlist Writer was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 234 megabytes
+    Info: Processing ended: Wed Mar 23 15:44:19 2016
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:01
+
+

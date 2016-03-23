@@ -1,0 +1,86 @@
+# Info: [9566]: Logging session transcript to file /home/kkgajjal/ece327/public_html/cur/proj/proj/precision.log
+//  Precision RTL Synthesis 64-bit 2015.2.16 (PS2015.2.1 Production Release) Tue Jan  5 23:04:49 PST 2016
+//  
+//  Copyright (c) Mentor Graphics Corporation, 1996-2016, All Rights Reserved.
+//             Portions copyright 1991-2008 Compuware Corporation
+//                       UNPUBLISHED, LICENSED SOFTWARE.
+//            CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//          PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+//  
+//  Running on Linux kkgajjal@eceLinux3.uwaterloo.ca #1 SMP Tue Jan 19 09:14:52 EST 2016 2.6.18-408.el5 x86_64
+//  
+//  Start time Wed Mar 23 15:57:44 2016
+# -------------------------------------------------
+# Info: [9566]: Logging session transcript to file /home/kkgajjal/ece327/public_html/cur/proj/proj/precision.log
+# Info: [9575]: The Results Directory has been set to: /home/kkgajjal/ece327/public_html/cur/proj/proj/uw_tmp
+# Info: [9569]: Moving session transcript to file /home/kkgajjal/ece327/public_html/cur/proj/proj/uw_tmp/precision.log
+# Info: [15298]: Setting up the design to use synthesis library "cycloneii.syn"
+# Info: [574]: The global max fanout is currently set to 1000 for Altera - Cyclone II.
+# Info: [15324]: Setting Part to: "EP2C35F672C".
+# Info: [15325]: Setting Process to: "7".
+# Info: [3022]: Reading file: /opt-src/CMC/local/maagaard/tools/mentor/precision/Mgc_home/pkgs/psr/techlibs/cycloneii.syn.
+# Info: [633]: Loading library initialization file /opt-src/CMC/local/maagaard/tools/mentor/precision/Mgc_home/pkgs/psr/userware/yeager_rename.tcl
+# Info: [40000]: vhdlorder, Release 2015b.13
+# Info: [40000]: Files sorted successfully.
+# Info: [40000]: hdl-analyze, Release RTLC-Precision 2015b.13
+# Info: [42502]: Analyzing input file "/home/kkgajjal/ece327/public_html/cur/proj/proj/mem.vhd" ...
+# Info: [42502]: Analyzing input file "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch_synth_pkg.vhd" ...
+# Info: [42502]: Analyzing input file "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd" ...
+# Info: [656]: Current working directory: /home/kkgajjal/ece327/public_html/cur/proj/proj/uw_tmp.
+# Info: [40000]: RTLC-Driver, Release RTLC-Precision 2015b.13
+# Info: [40000]: Last compiled on Dec 24 2015 14:33:45
+# Info: [44512]: Initializing...
+# Info: [44504]: Partitioning design ....
+# Info: [40000]: RTLCompiler, Release RTLC-Precision 2015b.13
+# Info: [40000]: Last compiled on Dec 24 2015 15:06:12
+# Info: [44512]: Initializing...
+# Info: [44522]: Root Module work.kirsch(main): Pre-processing...
+# Info: [44506]: Module work.mem(main){generic map (data_width => 8 addr_width => 8)}: Pre-processing...
+# Info: [45251]: Built-in hardware memory core inferred for variable ': mem.mem depth = 256, width = 8'.
+# Warning: [45731]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 49: Output port o_valid has never been assigned a value.
+# Warning: [45731]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 53: Output port o_row has never been assigned a value.
+# Warning: [45729]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 56: Input port debug_key has never been used.
+# Warning: [45729]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 57: Input port debug_switch has never been used.
+# Warning: [45729]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 75: signal row_index has never been used.
+# Warning: [45729]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 81: signal r4 has never been used.
+# Warning: [45729]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 95: signal dir1(3 downto 1) has never been used.
+# Warning: [45729]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 98: signal m2x has never been used.
+# Warning: [45729]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 98: signal m2y has never been used.
+# Warning: [45730]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 101: signal i_ce has no drivers, will be treated as don't care.
+# Warning: [45729]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 105: signal v[9:5] has never been used.
+# Warning: [45730]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 105: signal v[4:1] has no drivers, will be treated as don't care.
+# Info: [44508]: Module work.mem(main){generic map (data_width => 8 addr_width => 8)}: Compiling...
+# Info: [44523]: Root Module work.kirsch(main): Compiling...
+# Warning: [45784]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 232: Module work.kirsch(main), Net(s) v[3:0], A[7:0], C[7:0], H[7:0], B[7:0]: Although this signal is not part of the sensitivity list of this block, it is being read. This may lead to simulation mismatch.
+# Info: [44812]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 286: Sharing register sub[10] with sub[11]
+# Info: [44812]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 286: Sharing register sub[10] with sub[12]
+# Info: [44812]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 286: Sharing register sub[10] with sub[13]
+# Info: [45308]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 221: The comparison operator has been optimized to constant 1.
+# Info: [44838]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 157: Macro Modgen_Counter "counter_up_sclear_clock_cnt_en_0_8" inferred for node "col_index".
+# Info: [45309]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 149: Optimizing state bit(s) local_wren[2:1] to constant 0
+# Info: [45309]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 149: Optimizing state bit(s) local_wren[0] to constant 1
+# Info: [45309]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 262: Optimizing state bit(s) r1[9:0] to constant 0
+# Info: [45309]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 298: Optimizing state bit(s) r2[8:0] to constant 0
+# Info: [45309]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 271: Optimizing state bit(s) r3[9:0] to constant 0
+# Info: [45309]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 292: Optimizing state bit(s) r5[13:0] to constant 0
+# Info: [45309]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 95: Optimizing state bit(s) dir1(0)(1 downto 0) to constant 0
+# Info: [45193]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 95: Net dir1(2 downto 1) is unused after optimization
+# Info: [45309]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 286: Optimizing state bit(s) sub[14] to constant 0
+# Info: [45309]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 286: Optimizing state bit(s) sub[10:7] to constant 0
+# Info: [45309]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 149: Optimizing state bit(s) pr_st1 to constant 1
+# Info: [45309]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 271: Optimizing state bit(s) pr_st2 to constant 1
+# Info: [45309]: "/home/kkgajjal/ece327/public_html/cur/proj/proj/kirsch.vhd", line 207: Optimizing state bit(s) o_mode[0] to constant 1
+# Info: [44842]: Compilation successfully completed.
+# Info: [44841]: Counter Inferencing === Detected : 1, Inferred (Modgen/Selcounter/AddSub) : 1 (1 / 0 / 0), AcrossDH (Merged/Not-Merged) : (0 / 0), Not-Inferred (Acrossdh/Attempted) : (0 / 0), Local Vars : 0 ===
+# Info: [44856]: Total lines of RTL compiled: 423.
+# Info: [44835]: Total CPU time for compilation: 0.0 secs.
+# Info: [44513]: Overall running time for compilation: 1.0 secs.
+# Info: [656]: Current working directory: /home/kkgajjal/ece327/public_html/cur/proj/proj/uw_tmp.
+# Info: [15330]: Doing rtl optimizations.
+# Info: [659]: Finished compiling design.
+# Info: [3027]: Writing file: /home/kkgajjal/ece327/public_html/cur/proj/proj/uw_tmp/kirsch_gate.vhd.
+# Info: Info, Command 'auto_write' finished successfully
+# Info: *** synthesis to generic gates succeeded ***
+# COMMAND: close_results_dir
+# Info: [9578]: The Results Directory has been closed.
+close_results_dir

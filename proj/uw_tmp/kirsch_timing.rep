@@ -1,0 +1,112 @@
+//  Precision RTL Synthesis 64-bit 2015.2.16 (PS2015.2.1 Production Release) Tue Jan  5 23:04:49 PST 2016
+//  
+//  Copyright (c) Mentor Graphics Corporation, 1996-2016, All Rights Reserved.
+//             Portions copyright 1991-2008 Compuware Corporation
+//                       UNPUBLISHED, LICENSED SOFTWARE.
+//            CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//          PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+//  
+//  Running on Linux kkgajjal@eceLinux3.uwaterloo.ca #1 SMP Tue Jan 19 09:14:52 EST 2016 2.6.18-408.el5 x86_64
+//  
+//  Start time Wed Mar 23 14:32:34 2016
+
+-- Device: Altera - Cyclone II : EP2C35F672C : 7
+-- CTE report summary..
+-- POST-SYNTHESIS TIMING REPORTS ARE ESTIMATES AND SHOULD NOT BE RELIED ON TO MAKE QoR DECISIONS. For accurate timing information, please run place-and-route (P&R) and review P&R generated timing reports.
+
+================================================================================================
+                   Clock Frequency Report
+
+	Domain                  Clock Name                            Min Period (Freq)             Required Period (Freq)
+	------                  ----------                            -----------------             ----------------------
+	ClockDomain0            i_clock                               1.653 (604.961 MHz)           20.000 (50.000 MHz)
+
+
+================================================================================================
+Setup Timing Analysis of i_clock
+
+Setup Slack Path Summary
+
+               Data                                                                                                                                                                  Data
+       Setup   Path   Source    Dest.                                                                                                                                                End 
+Index  Slack   Delay   Clock    Clock                             Data Start Pin                                                          Data End Pin                               Edge
+-----  ------  -----  -------  -------  -------------------------------------------------------------------  ----------------------------------------------------------------------  ----
+  1    18.347  1.557  i_clock  i_clock  reg_q(0)/clk                                                         reg_q(7)/datain                                                         Rise
+  2    18.447  1.457  i_clock  i_clock  reg_q(1)/clk                                                         reg_q(7)/datain                                                         Rise
+  3    18.527  1.377  i_clock  i_clock  reg_q(2)/clk                                                         reg_q(7)/datain                                                         Rise
+  4    18.607  1.297  i_clock  i_clock  reg_q(3)/clk                                                         reg_q(7)/datain                                                         Rise
+  5    18.687  1.217  i_clock  i_clock  reg_q(4)/clk                                                         reg_q(7)/datain                                                         Rise
+  6    18.767  1.137  i_clock  i_clock  reg_q(5)/clk                                                         reg_q(7)/datain                                                         Rise
+  7    18.819  1.085  i_clock  i_clock  reg_q(6)/clk                                                         reg_q(6)/datain                                                         Rise
+  8    18.819  1.085  i_clock  i_clock  reg_q(7)/clk                                                         reg_q(7)/datain                                                         Rise
+  9    19.634  0.270  i_clock  i_clock  reg_r5(8)/clk                                                        reg_sub(8)/datain                                                       Rise
+ 10    19.634  0.270  i_clock  i_clock  kirsch_sr_tap_0_shiftregister_with_taps_2_3_1_sr_tap_0_reg_D(7)/clk  kirsch_sr_tap_0_shiftregister_with_taps_2_3_1_sr_tap_0_reg_I(7)/datain  Rise
+
+                  CTE Path Report
+
+
+Critical path #1, (path slack = 18.347):
+
+SOURCE CLOCK: name: i_clock period: 20.000000
+     Times are relative to the 1st rising edge
+  DEST CLOCK: name: i_clock period: 20.000000
+     Times are relative to the 2nd rising edge
+
+NAME                     GATE                     DELAY    ARRIVAL DIR  FANOUT
+reg_q(0)/clk          cycloneii_lcell_ff                   0.000   up
+reg_q(0)/regout       cycloneii_lcell_ff         0.000     0.000   up
+col_index(0)          (net)                      0.290                   2
+ix58250z52931/dataa   cycloneii_lcell_comb                 0.290   up
+ix58250z52931/cout    cycloneii_lcell_comb       0.517     0.807   up
+nx58250z7             (net)                *     0.000                   1
+ix58250z52930/cin     cycloneii_lcell_comb                 0.807   up
+ix58250z52930/cout    cycloneii_lcell_comb       0.080     0.887   up
+nx58250z6             (net)                *     0.000                   1
+ix58250z52929/cin     cycloneii_lcell_comb                 0.887   up
+ix58250z52929/cout    cycloneii_lcell_comb       0.080     0.967   up
+nx58250z5             (net)                *     0.000                   1
+ix58250z52928/cin     cycloneii_lcell_comb                 0.967   up
+ix58250z52928/cout    cycloneii_lcell_comb       0.080     1.047   up
+nx58250z4             (net)                *     0.000                   1
+ix58250z52927/cin     cycloneii_lcell_comb                 1.047   up
+ix58250z52927/cout    cycloneii_lcell_comb       0.080     1.127   up
+nx58250z3             (net)                *     0.000                   1
+ix58250z52926/cin     cycloneii_lcell_comb                 1.127   up
+ix58250z52926/cout    cycloneii_lcell_comb       0.080     1.207   up
+nx58250z2             (net)                *     0.000                   1
+ix58250z52925/cin     cycloneii_lcell_comb                 1.207   up
+ix58250z52925/cout    cycloneii_lcell_comb       0.080     1.287   up
+nx58250z1             (net)                *     0.000                   1
+ix58250z52923/cin     cycloneii_lcell_comb                 1.287   up
+ix58250z52923/combout cycloneii_lcell_comb       0.000     1.287   up
+inc_d(7)              (net)                *     0.270                   1
+reg_q(7)/datain       cycloneii_lcell_ff                   1.557   up
+
+		Initial edge separation:     20.000
+		Source clock delay:      -    0.000
+		Dest clock delay:        +    0.000
+		                        -----------
+		Edge separation:             20.000
+		Setup constraint:        -    0.096
+		                        -----------
+		Data required time:          19.904
+		Data arrival time:       -    1.557   ( 64.03% cell delay, 35.97% net delay )
+		                        -----------
+		Slack:                       18.347
+
+
+
+================================================================================================
+                   Input Delay Report
+
+	Input                  Clock Name                            Slack (ns)
+	-----                  ----------                            ----------
+	No input delay constraints.
+
+
+================================================================================================
+                   Output Delay Report
+
+	Output                 Clock Name                            Slack (ns)
+	------                 ----------                            ----------
+	No output delay constraints.
