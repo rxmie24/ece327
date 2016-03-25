@@ -329,7 +329,7 @@ process begin
 end process;
 
 stage3_add <= resize(r2, 14) + resize(stage1_add1, 14) when v(1) = '1' else 
-			  resize(to_unsigned(1, 14), 14) + resize(SHIFT_LEFT(r5, 1), 14) when v(4) = '1' else
+			  resize(r5, 14) + resize(SHIFT_LEFT(r5, 1), 14) when v(4) = '1' else
 			  resize(stage1_add1, 14) + resize(r5, 14);
 
 --------------------------------------------------
