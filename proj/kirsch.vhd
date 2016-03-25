@@ -122,7 +122,7 @@ architecture main of kirsch is
 	
 	signal v : std_logic_vector(7 downto 0);
 				
-	signal COMP_VAL : unsigned(14 downto 0);
+	signal COMP_VAL : signed(14 downto 0);
     signal MAX_COUNT : unsigned(7 downto 0);
 	
 	signal computation_ready : std_logic;
@@ -142,10 +142,10 @@ architecture main of kirsch is
 	
 	------------STAGE 2 STUFF------------
 	signal stage2_max : pixpair2;
-	signal stage2_sub  : unsigned(14 downto 0);
+	signal stage2_sub  : signed(14 downto 0);
 	signal r3 : pixpair2; --Output to be fed into Stage 3
 	signal r4 : std_logic;
-	signal r6 : unsigned(14 downto 0); --- optimize later
+	signal r6 : signed(14 downto 0); --- optimize later
 	signal edge_detected : std_logic;
 	signal final_dir_st2 : std_logic_vector(2 downto 0);
 
@@ -158,7 +158,7 @@ architecture main of kirsch is
 begin  
 
 --Changed this to 15 to make it easy for the comparator later - Ramie
-COMP_VAL <= to_unsigned(383, 15);
+COMP_VAL <= to_signed(383, 15);
 MAX_COUNT <= to_unsigned(255, 8);
 
 mem_Slot : for i in 0 to 2 generate 
@@ -304,7 +304,7 @@ process begin
 		  processing_stage2 <= processing_stage1;
 end process;
 
-stage2_sub <= resize(r5, 15) - resize(r3.p_data, 15); --MAD SKETCH
+stage2_sub <= signed(resize(r5, 15)) - signed(resize(r3.p_data, 15)); --MAD SKETCH
 
 process begin
    wait until rising_edge(i_clock);	 
@@ -334,7 +334,7 @@ stage3_add <= resize(r2, 14) + resize(stage1_add1, 14) when v(1) = '1' else
 
 --------------------------------------------------
 --Potential optimization by putting it into clocked process
-edge_detected <= '1' when r6 > resize(COMP_VAL, 15)  else '0';	 
+edge_detected <= '1' when r6 > 383  else '0';	 
 
 process begin
   wait until rising_edge(i_clock);
