@@ -2,13 +2,11 @@ library IEEE;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-
 package state_pkg is
   subtype output_data is std_logic_vector(7 downto 0); 
     type type_q_vector is array(natural range <>) of output_data;
 
   subtype direction_type is std_logic_vector(2 downto 0);
-	type dir_vector is array(natural range <>) of direction_type;
 
   type pixpair1 is RECORD
 	p_data : std_logic_vector(7 downto 0);
@@ -102,26 +100,23 @@ architecture main of kirsch is
 		
 		return maxPix;
 	end function;	
-
+	
+	------------OVERALL SIGNALS------------
 	signal A, B, C, D, E, F, G, H, I, pre_c, pre_d  : std_logic_vector(7 downto 0);
-  
 	signal col_idx, row_idx			: unsigned(7 downto 0);
 	signal q_vector                 : type_q_vector(2 downto 0);
 	signal local_wren               : std_logic_vector(2 downto 0);
-	
-	signal v : std_logic_vector(7 downto 0);				
-    signal MAX_COUNT : unsigned(7 downto 0);
-	
+	signal valid 					: std_logic_vector(7 downto 0);				
+    signal MAX_COUNT 				: unsigned(7 downto 0);
 	signal computation_ready, processing_stage1, processing_stage2, processing_stage3 : std_logic;
 	
-	------------STAGE 1 STUFF------------
+	------------STAGE 1 SIGNALS------------
 	signal stage1_max : pixpair1;
-	signal stage1_add1  : unsigned(8 downto 0);
+	signal stage1_add1, stage1_addterm1, stage1_addterm2  : unsigned(8 downto 0);
 	signal stage1_add2  : unsigned(9 downto 0);
-	signal stage1_addterm1, stage1_addterm2 : unsigned(8 downto 0);
 	signal r1 : pixpair2; -- Output to be fed into Stage 2
 	
-	------------STAGE 2 STUFF------------
+	------------STAGE 2 SIGNALS------------
 	signal stage2_max : pixpair2;
 	signal stage2_sub  : signed(14 downto 0);
 	signal r3 : pixpair2; -- Output to be fed into Stage 3
@@ -130,13 +125,15 @@ architecture main of kirsch is
 	signal edge_detected : std_logic;
 	signal final_dir_st2 : std_logic_vector(2 downto 0);
 
-	------------STAGE 3 STUFF------------
+	------------STAGE 3 SIGNALS------------
 	signal stage3_add : unsigned(13 downto 0);
 	signal r2 : unsigned(8 downto 0); 
 	signal r5 : unsigned(13 downto 0);
 	signal final_dir : std_logic_vector(2 downto 0);
 	
 begin  
+
+MAX_COUNT <= to_unsigned(255, 8);
 
 debug_num_5 <= X"E";
 debug_num_4 <= X"C";
@@ -154,7 +151,6 @@ o_col <= std_logic_vector(col_idx);
 o_mode(1) <= NOT i_reset;
 o_mode(0) <= i_reset OR processing_stage1 OR processing_stage2 OR processing_stage3;
 
-MAX_COUNT <= to_unsigned(255, 8);
 
 computation_ready <= '1' when (row_idx >= to_unsigned(2, 8) AND col_idx >= to_unsigned(2, 8)) else '0';
 
@@ -222,11 +218,11 @@ end process;
 process begin 
   wait until rising_edge(i_clock);
     if(i_reset = '1') then
-		v(7 downto 1) <= "0000000";
-		v(0) <= '0';
+		valid(7 downto 1) <= "0000000";
+		valid(0) <= '0';
 	else
-		v(0) <= (computation_ready AND i_valid);
-		v(7 downto 1) <= v(6 downto 0); 
+		valid(0) <= (computation_ready AND i_valid);
+		valid(7 downto 1) <= valid(6 downto 0); 
 	end if;
 end process;
 		  		  
@@ -234,21 +230,21 @@ end process;
 --								STAGE 1
 --===========================================================================
 stage1_add1 <= stage1_addterm1 + stage1_addterm2;
-stage1_addterm1 <= resize(unsigned(A),9) when v(0) = '1' else
-				   resize(unsigned(B),9) when v(1) = '1' else
-				   resize(unsigned(D),9) when v(2) = '1' else
-				   resize(unsigned(F),9) when v(3) = '1' else
+stage1_addterm1 <= resize(unsigned(A),9) when valid(0) = '1' else
+				   resize(unsigned(B),9) when valid(1) = '1' else
+				   resize(unsigned(D),9) when valid(2) = '1' else
+				   resize(unsigned(F),9) when valid(3) = '1' else
 				   "000000000"; 
-stage1_addterm2 <= resize(unsigned(H),9) when v(0) = '1' else
-				   resize(unsigned(C),9) when v(1) = '1' else
-				   resize(unsigned(E),9) when v(2) = '1' else
-				   resize(unsigned(G),9) when v(3) = '1' else
+stage1_addterm2 <= resize(unsigned(H),9) when valid(0) = '1' else
+				   resize(unsigned(C),9) when valid(1) = '1' else
+				   resize(unsigned(E),9) when valid(2) = '1' else
+				   resize(unsigned(G),9) when valid(3) = '1' else
 				   "000000000"; 
 		   
-stage1_max <= comp_max1(G, WEST, B, NORTHWEST) when v(0) = '1' else
-			  comp_max1(A, NORTH, D, NORTHEAST) when v(1) = '1' else
-			  comp_max1(C, EAST, F, SOUTHEAST) when v(2) = '1' else
-			  comp_max1(E, SOUTH, H, SOUTHWEST) when v(3) = '1' else
+stage1_max <= comp_max1(G, WEST, B, NORTHWEST) when valid(0) = '1' else
+			  comp_max1(A, NORTH, D, NORTHEAST) when valid(1) = '1' else
+			  comp_max1(C, EAST, F, SOUTHEAST) when valid(2) = '1' else
+			  comp_max1(E, SOUTH, H, SOUTHWEST) when valid(3) = '1' else
 			  comp_max1("00000000", "000", "00000000", "000"); 
 
 stage1_add2 <= resize(stage1_add1, 10) + resize(unsigned(stage1_max.p_data), 10);
@@ -268,11 +264,11 @@ stage2_sub <= signed(resize(r3.p_data, 15)) - signed(resize(r5, 15));
 process begin   
     wait until rising_edge(i_clock);	
 		  --v1 special case r3
-		  if v(1) = '1' then
+		  if valid(1) = '1' then
 			r3.p_data <= resize(r1.p_data, 13);
 			r3.p_dir <= r1.p_dir;			
 		  --v4 special case r3
-		  elsif v(4) = '1' then
+		  elsif valid(4) = '1' then
 			r3.p_data <= SHIFT_LEFT(stage2_max.p_data, 3);
 			r3.p_dir <= stage2_max.p_dir;
 			final_dir_st2 <= stage2_max.p_dir;
@@ -286,7 +282,7 @@ end process;
 
 process begin
    wait until rising_edge(i_clock);	 
-     if v(5) = '1' then
+     if valid(5) = '1' then
 		 r6 <= stage2_sub; 
 	end if;
 end process;
@@ -294,8 +290,8 @@ end process;
 --===========================================================================
 --								STAGE 3
 --===========================================================================
-stage3_add <= resize(r2, 14) + resize(stage1_add1, 14) when v(1) = '1' else 
-			  resize(r5, 14) + resize(SHIFT_LEFT(r5, 1), 14) when v(4) = '1' else
+stage3_add <= resize(r2, 14) + resize(stage1_add1, 14) when valid(1) = '1' else 
+			  resize(r5, 14) + resize(SHIFT_LEFT(r5, 1), 14) when valid(4) = '1' else
 			  resize(stage1_add1, 14) + resize(r5, 14);
 			  
 process begin
@@ -306,7 +302,7 @@ end process;
 
 process begin
    wait until rising_edge(i_clock);	   
-    if  v(0)= '1' then
+    if  valid(0)= '1' then
 	  r2 <= stage1_add1;	
    end if;
 end process;
@@ -318,7 +314,7 @@ edge_detected <= '1' when r6 > 383  else '0';
 
 process begin
   wait until rising_edge(i_clock);
-  if v(6) = '1' then
+  if valid(6) = '1' then
 	final_dir <= final_dir_st2;
 	r4 <= edge_detected;
   else
@@ -329,6 +325,6 @@ end process;
 o_row <= std_logic_vector(row_idx);
 o_edge <= r4;
 o_dir <= final_dir when r4 = '1' else "000";
-o_valid <= v(7);
+o_valid <= valid(7);
 
 end architecture;
