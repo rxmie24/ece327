@@ -4,7 +4,7 @@ use ieee.numeric_std.all;
 
 
 package state_pkg is
-  subtype output_data is std_logic_vector(7 downto 0); --KG (maybe unsigned?)
+  subtype output_data is std_logic_vector(7 downto 0); 
     type type_q_vector is array(natural range <>) of output_data;
 
   subtype direction_type is std_logic_vector(2 downto 0);
@@ -104,12 +104,6 @@ architecture main of kirsch is
 		
 		return maxPix;
 	end function;	
-	
-	function "rol" ( a : std_logic_vector; n : natural )
-		return std_logic_vector
-	  is begin
-		return std_logic_vector( unsigned(a) rol n );
-	end function;
 
 	signal A, B, C, D, E, F, G, H, I  : std_logic_vector(7 downto 0);
 	signal pre_c : std_logic_vector(7 downto 0);
@@ -120,9 +114,9 @@ architecture main of kirsch is
 	signal q_vector                   : type_q_vector(2 downto 0);
 	signal local_wren                 : std_logic_vector(2 downto 0);
 	
+	--Valid Bits (State)
 	signal v : std_logic_vector(7 downto 0);
 				
-	signal COMP_VAL : signed(14 downto 0);
     signal MAX_COUNT : unsigned(7 downto 0);
 	
 	signal computation_ready : std_logic;
@@ -130,22 +124,19 @@ architecture main of kirsch is
 	signal processing_stage2 : std_logic;
 	signal processing_stage3 : std_logic;
 	
-	signal local_output_edge : std_logic;
-	signal local_output_dir  : std_logic;
-	
 	------------STAGE 1 STUFF------------
 	signal stage1_max : pixpair1;
 	signal stage1_add1  : unsigned(8 downto 0);
 	signal stage1_add2  : unsigned(9 downto 0);
 	signal stage1_addterm1, stage1_addterm2 : unsigned(8 downto 0);
-	signal r1 : pixpair2; --Output to be fed into Stage 2
+	signal r1 : pixpair2; -- Output to be fed into Stage 2
 	
 	------------STAGE 2 STUFF------------
 	signal stage2_max : pixpair2;
 	signal stage2_sub  : signed(14 downto 0);
-	signal r3 : pixpair2; --Output to be fed into Stage 3
+	signal r3 : pixpair2; -- Output to be fed into Stage 3
 	signal r4 : std_logic;
-	signal r6 : signed(14 downto 0); --- optimize later
+	signal r6 : signed(14 downto 0);
 	signal edge_detected : std_logic;
 	signal final_dir_st2 : std_logic_vector(2 downto 0);
 
@@ -157,11 +148,9 @@ architecture main of kirsch is
 	
 begin  
 
---Changed this to 15 to make it easy for the comparator later - Ramie
-COMP_VAL <= to_signed(383, 15);
 MAX_COUNT <= to_unsigned(255, 8);
 
-mem_Slot : for i in 0 to 2 generate 
+MEM_SLOT : for i in 0 to 2 generate 
     mem : entity work.mem(main)
     port map (	
       address => std_logic_vector(col_idx), 
@@ -170,7 +159,7 @@ mem_Slot : for i in 0 to 2 generate
       wren => local_wren(i),
       q => q_vector(i)
     );
-end generate mem_Slot ;
+end generate MEM_SLOT ;
 
 debug_num_5 <= X"E";
 debug_num_4 <= X"C";
@@ -204,7 +193,7 @@ process begin
 					local_wren <= "001";
 					processing_stage1 <= '0';
 				else 
-					local_wren <= local_wren rol 1;
+					local_wren <= std_logic_vector(unsigned(local_wren) rol 1 );
 				end if;
 			end if;
 			col_idx <= col_idx + 1;
@@ -238,20 +227,18 @@ pre_d <= std_logic_vector(q_vector(1))  when local_wren(2) = '1' else
 
 -------------Valid Bit States ------
 computation_ready <= '1' when (row_idx >= to_unsigned(2, 8) AND col_idx >= to_unsigned(2, 8)) else '0';
---v(0) <= (computation_ready AND i_valid) when i_reset = '0' else '0';
+
 process begin 
   wait until rising_edge(i_clock);
-    
     if(i_reset = '1') then
-	  v(7 downto 1) <= "0000000";
-	  v(0) <= '0';
+		v(7 downto 1) <= "0000000";
+		v(0) <= '0';
 	else
 		v(0) <= (computation_ready AND i_valid);
 		v(7 downto 1) <= v(6 downto 0); 
 	end if;
 end process;
-		  
-		  
+		  		  
 ------------ STAGE 1 --------
 stage1_add1 <= stage1_addterm1 + stage1_addterm2;
 
@@ -278,16 +265,16 @@ stage1_add2 <= resize(stage1_add1, 10) + resize(unsigned(stage1_max.p_data), 10)
 process begin
      wait until rising_edge(i_clock);
 		r1.p_data <= resize(stage1_add2, 13);
-		r1.p_dir <= stage1_max.p_dir; ---SKETCHY
+		r1.p_dir <= stage1_max.p_dir;
 end process;
 
 ------------ STAGE 2 --------
 stage2_max <= comp_max2(r3.p_data, r3.p_dir, r1.p_data, r1.p_dir);
+stage2_sub <= signed(resize(r3.p_data, 15)) - signed(resize(r5, 15));
 
 process begin   
     wait until rising_edge(i_clock);	
 		  --v1 special case r3
-		  -- changed v1 to v2
 		  if v(1) = '1' then
 			r3.p_data <= resize(r1.p_data, 13);
 			r3.p_dir <= r1.p_dir;			
@@ -304,8 +291,6 @@ process begin
 		  processing_stage2 <= processing_stage1;
 end process;
 
-stage2_sub <= signed(resize(r3.p_data, 15)) - signed(resize(r5, 15)); --MAD SKETCH
-
 process begin
    wait until rising_edge(i_clock);	 
      if v(5) = '1' then
@@ -313,7 +298,6 @@ process begin
 	end if;
 end process;
 
---Seems like theres a hang after stage2
 ------------ STAGE 3 --------
 process begin
    wait until rising_edge(i_clock);	 
@@ -333,7 +317,6 @@ stage3_add <= resize(r2, 14) + resize(stage1_add1, 14) when v(1) = '1' else
 			  resize(stage1_add1, 14) + resize(r5, 14);
 
 --------------------------------------------------
---Potential optimization by putting it into clocked process
 edge_detected <= '1' when r6 > 383  else '0';	 
 
 process begin
