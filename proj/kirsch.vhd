@@ -111,8 +111,8 @@ architecture main of kirsch is
 	signal computation_ready, processing_stage1, processing_stage2, processing_stage3 : std_logic;
 	
 	------------STAGE 1 SIGNALS------------
-	signal stage1_max : pixpair1;
-	signal stage1_add1, stage1_addterm1, stage1_addterm2  : unsigned(8 downto 0);
+	signal stage1_max   : pixpair1;
+	signal stage1_add1  : unsigned(8 downto 0);
 	signal stage1_add2  : unsigned(9 downto 0);
 	signal r1 : pixpair2; -- Output to be fed into Stage 2
 	
@@ -150,7 +150,6 @@ o_col <= std_logic_vector(col_idx);
 
 o_mode(1) <= NOT i_reset;
 o_mode(0) <= i_reset OR processing_stage1 OR processing_stage2 OR processing_stage3;
-
 
 computation_ready <= '1' when (row_idx >= to_unsigned(2, 8) AND col_idx >= to_unsigned(2, 8)) else '0';
 
@@ -229,18 +228,12 @@ end process;
 --===========================================================================
 --	STAGE 1
 --===========================================================================
-stage1_add1 <= stage1_addterm1 + stage1_addterm2;
-stage1_addterm1 <= resize(unsigned(A),9) when valid(0) = '1' else
-				   resize(unsigned(B),9) when valid(1) = '1' else
-				   resize(unsigned(D),9) when valid(2) = '1' else
-				   resize(unsigned(F),9) when valid(3) = '1' else
-				   "000000000"; 
-stage1_addterm2 <= resize(unsigned(H),9) when valid(0) = '1' else
-				   resize(unsigned(C),9) when valid(1) = '1' else
-				   resize(unsigned(E),9) when valid(2) = '1' else
-				   resize(unsigned(G),9) when valid(3) = '1' else
-				   "000000000"; 
-		   
+stage1_add1 <= resize(unsigned(A), 9) + resize(unsigned(H), 9) when valid(0) = '1' else
+			   resize(unsigned(B), 9) + resize(unsigned(C), 9) when valid(1) = '1' else
+			   resize(unsigned(D), 9) + resize(unsigned(E), 9) when valid(2) = '1' else
+			   resize(unsigned(F), 9) + resize(unsigned(G), 9) when valid(3) = '1' else
+			   "000000000"; 
+				   
 stage1_max <= comp_max1(G, WEST, B, NORTHWEST) when valid(0) = '1' else
 			  comp_max1(A, NORTH, D, NORTHEAST) when valid(1) = '1' else
 			  comp_max1(C, EAST, F, SOUTHEAST) when valid(2) = '1' else
