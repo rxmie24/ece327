@@ -255,22 +255,22 @@ end process;
 ------------ STAGE 1 --------
 stage1_add1 <= stage1_addterm1 + stage1_addterm2;
 
-stage1_addterm1 <= resize(unsigned(B),9) when v(0) = '1' else
-				   resize(unsigned(D),9) when v(1) = '1' else
-				   resize(unsigned(F),9) when v(2) = '1' else
-				   resize(unsigned(A),9) when v(3) = '1' else
+stage1_addterm1 <= resize(unsigned(A),9) when v(0) = '1' else
+				   resize(unsigned(B),9) when v(1) = '1' else
+				   resize(unsigned(D),9) when v(2) = '1' else
+				   resize(unsigned(F),9) when v(3) = '1' else
 				   "000000000"; 
 		   
-stage1_addterm2 <= resize(unsigned(C),9) when v(0) = '1' else
-				   resize(unsigned(E),9) when v(1) = '1' else
-				   resize(unsigned(G),9) when v(2) = '1' else
-				   resize(unsigned(H),9) when v(3) = '1' else
+stage1_addterm2 <= resize(unsigned(H),9) when v(0) = '1' else
+				   resize(unsigned(C),9) when v(1) = '1' else
+				   resize(unsigned(E),9) when v(2) = '1' else
+				   resize(unsigned(G),9) when v(3) = '1' else
 				   "000000000"; 
 		   
-stage1_max <= comp_max1(A, NORTHWEST, D, EAST) when v(0) = '1' else
-			  comp_max1(C, NORTHEAST, F, SOUTH) when v(1) = '1' else
-			  comp_max1(H, WEST, E, SOUTHEAST) when v(2) = '1' else
-			  comp_max1(B, NORTH, G, SOUTHWEST) when v(3) = '1' else
+stage1_max <= comp_max1(G, WEST, B, NORTHWEST) when v(0) = '1' else
+			  comp_max1(A, NORTH, D, NORTHEAST) when v(1) = '1' else
+			  comp_max1(C, EAST, F, SOUTHEAST) when v(2) = '1' else
+			  comp_max1(E, SOUTH, H, SOUTHWEST) when v(3) = '1' else
 			  comp_max1("00000000", "000", "00000000", "000"); 
 
 
