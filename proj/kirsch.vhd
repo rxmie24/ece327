@@ -282,7 +282,7 @@ process begin
 end process;
 
 ------------ STAGE 2 --------
-stage2_max <= comp_max2(r1.p_data, r1.p_dir, r3.p_data, r3.p_dir);
+stage2_max <= comp_max2(r3.p_data, r3.p_dir, r1.p_data, r1.p_dir);
 
 process begin   
     wait until rising_edge(i_clock);	
