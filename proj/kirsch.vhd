@@ -114,9 +114,8 @@ architecture main of kirsch is
 	signal q_vector                   : type_q_vector(2 downto 0);
 	signal local_wren                 : std_logic_vector(2 downto 0);
 	
-	--Valid Bits (State)
-	signal v : std_logic_vector(7 downto 0);
-				
+
+	signal v : std_logic_vector(7 downto 0);				
     signal MAX_COUNT : unsigned(7 downto 0);
 	
 	signal computation_ready : std_logic;
@@ -148,19 +147,6 @@ architecture main of kirsch is
 	
 begin  
 
-MAX_COUNT <= to_unsigned(255, 8);
-
-MEM_SLOT : for i in 0 to 2 generate 
-    mem : entity work.mem(main)
-    port map (	
-      address => std_logic_vector(col_idx), 
-      clock => i_clock,
-      data => i_pixel,
-      wren => local_wren(i),
-      q => q_vector(i)
-    );
-end generate MEM_SLOT ;
-
 debug_num_5 <= X"E";
 debug_num_4 <= X"C";
 debug_num_3 <= X"E";
@@ -177,7 +163,24 @@ o_col <= std_logic_vector(col_idx);
 o_mode(1) <= NOT i_reset;
 o_mode(0) <= i_reset OR processing_stage1 OR processing_stage2 OR processing_stage3;
 
--- Incrementing and setting up stuff --
+MAX_COUNT <= to_unsigned(255, 8);
+
+computation_ready <= '1' when (row_idx >= to_unsigned(2, 8) AND col_idx >= to_unsigned(2, 8)) else '0';
+
+MEM_SLOT : for i in 0 to 2 generate 
+    mem : entity work.mem(main)
+    port map (	
+      address => std_logic_vector(col_idx), 
+      clock => i_clock,
+      data => i_pixel,
+      wren => local_wren(i),
+      q => q_vector(i)
+    );
+end generate MEM_SLOT;
+
+--===========================================================================
+--								DATA PREP
+--===========================================================================
 process begin 
    wait until rising_edge(i_clock);
 	  if (i_reset = '1') then
@@ -201,7 +204,15 @@ process begin
 	 end if;
 end process;
 
----------------------------Convolution Table Move--------------------------------	
+---------------------------Convolution Table --------------------------------		
+pre_c <= std_logic_vector(q_vector(0)) when local_wren(2) = '1' else
+		 std_logic_vector(q_vector(1)) when local_wren(0) = '1' else
+		 std_logic_vector(q_vector(2));
+		  
+pre_d <= std_logic_vector(q_vector(1))  when local_wren(2) = '1' else
+		 std_logic_vector(q_vector(2))  when local_wren(0) = '1' else
+		 std_logic_vector(q_vector(0));
+		 
 process begin
 	wait until rising_edge(i_clock);
 		if(i_valid = '1') then
@@ -216,17 +227,6 @@ process begin
 			E <= i_pixel;
 		end if;
 end process;
-	
-pre_c <= std_logic_vector(q_vector(0)) when local_wren(2) = '1' else
-		 std_logic_vector(q_vector(1)) when local_wren(0) = '1' else
-		 std_logic_vector(q_vector(2));
-		  
-pre_d <= std_logic_vector(q_vector(1))  when local_wren(2) = '1' else
-		 std_logic_vector(q_vector(2))  when local_wren(0) = '1' else
-		 std_logic_vector(q_vector(0));
-
--------------Valid Bit States ------
-computation_ready <= '1' when (row_idx >= to_unsigned(2, 8) AND col_idx >= to_unsigned(2, 8)) else '0';
 
 process begin 
   wait until rising_edge(i_clock);
@@ -239,15 +239,15 @@ process begin
 	end if;
 end process;
 		  		  
------------- STAGE 1 --------
+--===========================================================================
+--								STAGE 1
+--===========================================================================
 stage1_add1 <= stage1_addterm1 + stage1_addterm2;
-
 stage1_addterm1 <= resize(unsigned(A),9) when v(0) = '1' else
 				   resize(unsigned(B),9) when v(1) = '1' else
 				   resize(unsigned(D),9) when v(2) = '1' else
 				   resize(unsigned(F),9) when v(3) = '1' else
 				   "000000000"; 
-		   
 stage1_addterm2 <= resize(unsigned(H),9) when v(0) = '1' else
 				   resize(unsigned(C),9) when v(1) = '1' else
 				   resize(unsigned(E),9) when v(2) = '1' else
@@ -260,15 +260,17 @@ stage1_max <= comp_max1(G, WEST, B, NORTHWEST) when v(0) = '1' else
 			  comp_max1(E, SOUTH, H, SOUTHWEST) when v(3) = '1' else
 			  comp_max1("00000000", "000", "00000000", "000"); 
 
-
 stage1_add2 <= resize(stage1_add1, 10) + resize(unsigned(stage1_max.p_data), 10);
+
 process begin
      wait until rising_edge(i_clock);
 		r1.p_data <= resize(stage1_add2, 13);
 		r1.p_dir <= stage1_max.p_dir;
 end process;
 
------------- STAGE 2 --------
+--===========================================================================
+--								STAGE 2
+--===========================================================================
 stage2_max <= comp_max2(r3.p_data, r3.p_dir, r1.p_data, r1.p_dir);
 stage2_sub <= signed(resize(r3.p_data, 15)) - signed(resize(r5, 15));
 
@@ -280,7 +282,7 @@ process begin
 			r3.p_dir <= r1.p_dir;			
 		  --v4 special case r3
 		  elsif v(4) = '1' then
-			r3.p_data <= SHIFT_LEFT(stage2_max.p_data, 3); --SKETCHY
+			r3.p_data <= SHIFT_LEFT(stage2_max.p_data, 3);
 			r3.p_dir <= stage2_max.p_dir;
 			final_dir_st2 <= stage2_max.p_dir;
 		  else
@@ -298,7 +300,13 @@ process begin
 	end if;
 end process;
 
------------- STAGE 3 --------
+--===========================================================================
+--								STAGE 3
+--===========================================================================
+stage3_add <= resize(r2, 14) + resize(stage1_add1, 14) when v(1) = '1' else 
+			  resize(r5, 14) + resize(SHIFT_LEFT(r5, 1), 14) when v(4) = '1' else
+			  resize(stage1_add1, 14) + resize(r5, 14);
+			  
 process begin
    wait until rising_edge(i_clock);	 
 	 processing_stage3 <= processing_stage2;
@@ -312,11 +320,9 @@ process begin
    end if;
 end process;
 
-stage3_add <= resize(r2, 14) + resize(stage1_add1, 14) when v(1) = '1' else 
-			  resize(r5, 14) + resize(SHIFT_LEFT(r5, 1), 14) when v(4) = '1' else
-			  resize(stage1_add1, 14) + resize(r5, 14);
-
---------------------------------------------------
+--===========================================================================
+--								OUTPUT STAGE
+--===========================================================================
 edge_detected <= '1' when r6 > 383  else '0';	 
 
 process begin
