@@ -67,8 +67,6 @@ entity kirsch is
 end entity;
 
 architecture main of kirsch is
-	
-
 	function comp_max1(
 		pixel1 : std_logic_vector;
 		pixel1_dir : std_logic_vector;
@@ -105,23 +103,16 @@ architecture main of kirsch is
 		return maxPix;
 	end function;	
 
-	signal A, B, C, D, E, F, G, H, I  : std_logic_vector(7 downto 0);
-	signal pre_c : std_logic_vector(7 downto 0);
-	signal pre_d : std_logic_vector(7 downto 0);
+	signal A, B, C, D, E, F, G, H, I, pre_c, pre_d  : std_logic_vector(7 downto 0);
   
-	signal col_idx                  : unsigned(7 downto 0);
-	signal row_idx       			  : unsigned(7 downto 0);	
-	signal q_vector                   : type_q_vector(2 downto 0);
-	signal local_wren                 : std_logic_vector(2 downto 0);
+	signal col_idx, row_idx			: unsigned(7 downto 0);
+	signal q_vector                 : type_q_vector(2 downto 0);
+	signal local_wren               : std_logic_vector(2 downto 0);
 	
-
 	signal v : std_logic_vector(7 downto 0);				
     signal MAX_COUNT : unsigned(7 downto 0);
 	
-	signal computation_ready : std_logic;
-	signal processing_stage1 : std_logic;
-	signal processing_stage2 : std_logic;
-	signal processing_stage3 : std_logic;
+	signal computation_ready, processing_stage1, processing_stage2, processing_stage3 : std_logic;
 	
 	------------STAGE 1 STUFF------------
 	signal stage1_max : pixpair1;
