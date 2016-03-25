@@ -166,7 +166,7 @@ MEM_SLOT : for i in 0 to 2 generate
 end generate MEM_SLOT;
 
 --===========================================================================
---								DATA PREP
+--	DATA PREP
 --===========================================================================
 process begin 
    wait until rising_edge(i_clock);
@@ -227,7 +227,7 @@ process begin
 end process;
 		  		  
 --===========================================================================
---								STAGE 1
+--	STAGE 1
 --===========================================================================
 stage1_add1 <= stage1_addterm1 + stage1_addterm2;
 stage1_addterm1 <= resize(unsigned(A),9) when valid(0) = '1' else
@@ -256,7 +256,7 @@ process begin
 end process;
 
 --===========================================================================
---								STAGE 2
+--	STAGE 2
 --===========================================================================
 stage2_max <= comp_max2(r3.p_data, r3.p_dir, r1.p_data, r1.p_dir);
 stage2_sub <= signed(resize(r3.p_data, 15)) - signed(resize(r5, 15));
@@ -288,7 +288,7 @@ process begin
 end process;
 
 --===========================================================================
---								STAGE 3
+--	STAGE 3
 --===========================================================================
 stage3_add <= resize(r2, 14) + resize(stage1_add1, 14) when valid(1) = '1' else 
 			  resize(r5, 14) + resize(SHIFT_LEFT(r5, 1), 14) when valid(4) = '1' else
@@ -308,7 +308,7 @@ process begin
 end process;
 
 --===========================================================================
---								OUTPUT STAGE
+--	OUTPUT STAGE
 --===========================================================================
 edge_detected <= '1' when r6 > 383  else '0';	 
 
