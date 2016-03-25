@@ -304,7 +304,7 @@ process begin
 		  processing_stage2 <= processing_stage1;
 end process;
 
-stage2_sub <= signed(resize(r5, 15)) - signed(resize(r3.p_data, 15)); --MAD SKETCH
+stage2_sub <= signed(resize(r3.p_data, 15)) - signed(resize(r5, 15)); --MAD SKETCH
 
 process begin
    wait until rising_edge(i_clock);	 
